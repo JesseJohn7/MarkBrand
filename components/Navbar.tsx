@@ -75,7 +75,7 @@ export default function Navbar() {
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               <span className="text-[#C8973A]">Mark</span>
-              <span className="text-stone-200">Brand</span>
+              <span className="text-[#C8973A]">Brand</span>
             </span>
             <span className="text-[0.58rem] tracking-[0.28em] uppercase text-[#A0742A] mt-0.5 group-hover:text-[#7A5518] transition-colors duration-200">
               Group Nigeria
