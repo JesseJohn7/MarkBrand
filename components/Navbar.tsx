@@ -2,8 +2,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-const NAV_LINKS = [
+// ✅ FIX 1: Proper TypeScript types (no more implicit `any`)
+type NavLink = {
+  label: string;
+  href: string;
+  dropdown?: { label: string; href: string }[];
+};
+
+const NAV_LINKS: NavLink[] = [
   { label: "About", href: "#about" },
   { label: "Our Team", href: "#team" },
   { label: "Gallery", href: "#gallery" },
@@ -28,6 +36,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  // ✅ FIX 2: Correct ref type for <ul>
   const dropdownRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -51,6 +60,14 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  // ✅ FIX 3: Single handler that closes ALL nav state on any link click
+  // Previously drawer stayed open after clicking a link
+  const handleNavClick = () => {
+    setMenuOpen(false);
+    setActiveDropdown(null);
+    setMobileExpanded(null);
+  };
+
   return (
     <>
       {/* Gold accent top bar */}
@@ -61,25 +78,25 @@ export default function Navbar() {
       />
 
       {/* Main Navbar */}
-      <nav className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0D0D0D]/95 backdrop-blur-xl shadow-[0_1px_0_rgba(200,151,58,0.2),0_8px_32px_rgba(0,0,0,0.5)] py-3"
-          : "bg-transparent py-5"
-      }`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
+          scrolled
+            ? "bg-[#0D0D0D]/95 backdrop-blur-xl shadow-[0_1px_0_rgba(200,151,58,0.2),0_8px_32px_rgba(0,0,0,0.5)] py-2"
+            : "bg-transparent py-4"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-8">
 
           {/* Logo */}
-          <Link href="#home" className="flex flex-col leading-none group flex-shrink-0">
-            <span
-              className="font-bold text-2xl tracking-wide transition-colors duration-200"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              <span className="text-[#C8973A]">Mark</span>
-              <span className="text-[#C8973A]">Brand</span>
-            </span>
-            <span className="text-[0.58rem] tracking-[0.28em] uppercase text-[#A0742A] mt-0.5 group-hover:text-[#7A5518] transition-colors duration-200">
-              Group Nigeria
-            </span>
+          <Link href="#home" onClick={handleNavClick} className="flex items-center flex-shrink-0 group">
+            <Image
+              src="/logo.jpg"
+              alt="MarkBrand Group Nigeria"
+              width={140}
+              height={48}
+              className="h-11 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav Links */}
@@ -88,18 +105,23 @@ export default function Navbar() {
               <li key={item.label} className="relative">
                 {item.dropdown ? (
                   <>
+                    {/* ✅ FIX 4: Added type="button" to prevent accidental form submission */}
                     <button
+                      type="button"
                       onClick={() =>
                         setActiveDropdown(activeDropdown === item.label ? null : item.label)
                       }
                       aria-expanded={activeDropdown === item.label}
+                      aria-haspopup="true"
                       className="group flex items-center gap-1 px-4 py-2 text-xs font-medium tracking-widest uppercase relative text-[#C8973A] hover:text-[#7A5518] transition-colors duration-200"
                     >
                       {item.label}
                       <svg
                         viewBox="0 0 12 12" strokeWidth="2" strokeLinecap="round"
                         strokeLinejoin="round" stroke="currentColor" fill="none"
-                        className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.label ? "rotate-180" : ""}`}
+                        className={`w-3 h-3 transition-transform duration-200 ${
+                          activeDropdown === item.label ? "rotate-180" : ""
+                        }`}
                         aria-hidden="true"
                       >
                         <polyline points="2,4 6,8 10,4" />
@@ -109,18 +131,22 @@ export default function Navbar() {
                       }`} />
                     </button>
 
-                    {/* Dropdown panel */}
-                    <div className={`absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 min-w-[210px] bg-[#111111] border border-[#C8973A]/20 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.7)] py-2 z-50 transition-all duration-200 ${
-                      activeDropdown === item.label
-                        ? "opacity-100 translate-y-0 pointer-events-auto"
-                        : "opacity-0 -translate-y-1.5 pointer-events-none"
-                    }`}>
+                    {/* ✅ FIX 5: Added role="menu" for accessibility */}
+                    <div
+                      role="menu"
+                      className={`absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 min-w-[210px] bg-[#111111] border border-[#C8973A]/20 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.7)] py-2 z-50 transition-all duration-200 ${
+                        activeDropdown === item.label
+                          ? "opacity-100 translate-y-0 pointer-events-auto"
+                          : "opacity-0 -translate-y-1.5 pointer-events-none"
+                      }`}
+                    >
                       <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111111] border-l border-t border-[#C8973A]/20 rotate-45" />
                       {item.dropdown.map((sub) => (
                         <Link
                           key={sub.label}
                           href={sub.href}
-                          onClick={() => setActiveDropdown(null)}
+                          role="menuitem"
+                          onClick={handleNavClick}
                           className="group/sub flex items-center gap-2.5 px-5 py-2.5 text-xs tracking-wide text-[#C8973A] hover:text-[#7A5518] hover:bg-black/40 transition-all duration-150"
                         >
                           <span className="w-1 h-1 rounded-full bg-[#C8973A] opacity-0 group-hover/sub:opacity-100 transition-opacity duration-150 flex-shrink-0" />
@@ -132,6 +158,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={item.href}
+                    onClick={handleNavClick}
                     className="group relative flex items-center px-4 py-2 text-xs font-medium tracking-widest uppercase text-[#C8973A] hover:text-[#7A5518] transition-colors duration-200"
                   >
                     {item.label}
@@ -146,33 +173,30 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="#contact"
-              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm border border-[#C8973A] hover:bg-[#7A5518] hover:border-[#8B6520] transition-all duration-200 flex-shrink-0"
+              onClick={handleNavClick}
+              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm border border-[#C8973A] hover:bg-[#7A5518] hover:border-[#7A5518] transition-all duration-200 flex-shrink-0"
             >
-              Let's Talk
+              Let&apos;s Talk
             </Link>
 
-            {/* Hamburger — bright gold on dark pill, impossible to miss */}
+            {/* ✅ FIX 6: Functional toggle using prev state — avoids stale closure */}
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
+              type="button"
+              onClick={() => setMenuOpen((prev) => !prev)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              className="lg:hidden flex flex-col justify-center items-center gap-[6px] w-11 h-11 bg-[#C8973A] rounded-sm cursor-pointer p-0 hover:bg-[#7A5518] transition-colors duration-200 flex-shrink-0"
+              aria-controls="mobile-drawer"
+              className="lg:hidden flex flex-col justify-center items-center gap-[6px] w-11 h-11 bg-[#C8973A] rounded-sm cursor-pointer hover:bg-[#7A5518] transition-colors duration-200 flex-shrink-0"
             >
-              <span className={`block h-[2px] w-5 bg-[#0D0D0D] rounded-full transition-all duration-300 origin-center ${
-                menuOpen ? "translate-y-[8px] rotate-45" : ""
-              }`} />
-              <span className={`block h-[2px] bg-[#0D0D0D] rounded-full transition-all duration-300 ${
-                menuOpen ? "opacity-0 w-0" : "opacity-100 w-3"
-              }`} />
-              <span className={`block h-[2px] w-5 bg-[#0D0D0D] rounded-full transition-all duration-300 origin-center ${
-                menuOpen ? "-translate-y-[8px] -rotate-45" : ""
-              }`} />
+              <span className={`block h-[2px] w-5 bg-[#0D0D0D] rounded-full transition-all duration-300 origin-center ${menuOpen ? "translate-y-[8px] rotate-45" : ""}`} />
+              <span className={`block h-[2px] bg-[#0D0D0D] rounded-full transition-all duration-300 ${menuOpen ? "opacity-0 w-0" : "opacity-100 w-3"}`} />
+              <span className={`block h-[2px] w-5 bg-[#0D0D0D] rounded-full transition-all duration-300 origin-center ${menuOpen ? "-translate-y-[8px] -rotate-45" : ""}`} />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile backdrop */}
+      {/* Mobile Backdrop */}
       <div
         onClick={() => setMenuOpen(false)}
         aria-hidden="true"
@@ -181,21 +205,27 @@ export default function Navbar() {
         }`}
       />
 
-      {/* Mobile Drawer */}
+      {/* ✅ FIX 7: Added id="mobile-drawer" to match aria-controls on hamburger */}
       <div
+        id="mobile-drawer"
         role="dialog"
         aria-modal="true"
-        aria-label="Navigation"
+        aria-label="Navigation menu"
         className={`lg:hidden fixed top-0 right-0 h-[100dvh] w-[min(320px,85vw)] bg-[#0D0D0D] border-l-2 border-[#C8973A]/40 z-[9998] flex flex-col pt-20 pb-10 px-7 overflow-y-auto transition-transform duration-[380ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Drawer logo */}
-        <div className="absolute top-6 left-7">
-          <span className="font-bold text-xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            <span className="text-[#C8973A]">Mark</span>
-            <span className="text-stone-300">Brand</span>
-          </span>
+        {/* ✅ FIX 8: Drawer logo is now a link, not just a div */}
+        <div className="absolute top-5 left-7">
+          <Link href="#home" onClick={handleNavClick}>
+            <Image
+              src="/logo.jpg"
+              alt="MarkBrand Group Nigeria"
+              width={110}
+              height={38}
+              className="h-9 w-auto object-contain"
+            />
+          </Link>
         </div>
 
         <div className="flex flex-col flex-1">
@@ -204,6 +234,7 @@ export default function Navbar() {
               {item.dropdown ? (
                 <>
                   <button
+                    type="button"
                     onClick={() =>
                       setMobileExpanded(mobileExpanded === item.label ? null : item.label)
                     }
@@ -230,7 +261,7 @@ export default function Navbar() {
                       <Link
                         key={sub.label}
                         href={sub.href}
-                        onClick={() => setMenuOpen(false)}
+                        onClick={handleNavClick}
                         className="flex items-center gap-3 pl-4 py-3 text-xs tracking-widest uppercase text-[#A0742A] hover:text-[#7A5518] border-b border-stone-800/50 transition-colors duration-150"
                       >
                         <span className="w-1 h-1 rounded-full bg-[#C8973A] flex-shrink-0" />
@@ -242,7 +273,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={handleNavClick}
                   className="flex items-center py-4 border-b border-stone-800 text-sm font-medium tracking-widest uppercase text-[#C8973A] hover:text-[#7A5518] transition-colors duration-200"
                 >
                   {item.label}
@@ -251,19 +282,18 @@ export default function Navbar() {
             </div>
           ))}
 
-          {/* Mobile CTA */}
           <div className="mt-auto pt-8">
             <Link
               href="#contact"
-              onClick={() => setMenuOpen(false)}
+              onClick={handleNavClick}
               className="block text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm hover:bg-[#7A5518] transition-colors duration-200"
             >
-              Let's Talk
+              Let&apos;s Talk
             </Link>
           </div>
 
           <p className="mt-6 text-[0.6rem] tracking-[0.2em] uppercase text-stone-700 text-center">
-            Marking You Out · Since 2014
+            Marking You Out &middot; Since 2014
           </p>
         </div>
       </div>
