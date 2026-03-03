@@ -75,7 +75,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="#home" className="flex flex-col leading-none group flex-shrink-0">
             <span
-              className="font-bold text-2xl tracking-wide text-stone-100 group-hover:text-[#E5B96A] transition-colors duration-200"
+              className="font-bold text-2xl tracking-wide text-[#C8973A] group-hover:text-[#E5B96A] transition-colors duration-200"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Mark<span className="text-[#C8973A]">Brand</span>
