@@ -16,7 +16,7 @@ const NAV_LINKS: NavLink[] = [
   { label: "Our Team", href: "#team" },
   { label: "Gallery", href: "#gallery" },
   { label: "Our Services", href: "#services" },
-  { label: "Branding", href: "#branding" },
+  
   {
     label: "Subsidiaries",
     href: "#subsidiaries",
@@ -90,7 +90,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="#home" onClick={handleNavClick} className="flex items-center flex-shrink-0 group">
             <Image
-              src="/logo.jpg"
+              src="/logo.png"
               alt="MarkBrand Group Nigeria"
               width={140}
               height={48}
@@ -113,7 +113,7 @@ export default function Navbar() {
                       }
                       aria-expanded={activeDropdown === item.label}
                       aria-haspopup="true"
-                      className="group flex items-center gap-1 px-4 py-2 text-xs font-medium tracking-widest uppercase relative text-[#C8973A] hover:text-[#7A5518] transition-colors duration-200"
+                      className="group flex items-center gap-1 px-4 py-2 text-xs font-medium tracking-widest uppercase relative text-[#00ff64] hover:text-[#7A5518] transition-colors duration-200"
                     >
                       {item.label}
                       <svg
@@ -140,7 +140,7 @@ export default function Navbar() {
                           : "opacity-0 -translate-y-1.5 pointer-events-none"
                       }`}
                     >
-                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111111] border-l border-t border-[#C8973A]/20 rotate-45" />
+                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111111] border-l border-t text-[#00ff64]/20 rotate-45" />
                       {item.dropdown.map((sub) => (
                         <Link
                           key={sub.label}
@@ -286,7 +286,7 @@ export default function Navbar() {
             <Link
               href="#contact"
               onClick={handleNavClick}
-              className="block text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm hover:bg-[#7A5518] transition-colors duration-200"
+              className="block text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase bg-[#00ff64] rounded-sm hover:bg-[#7A5518] transition-colors duration-200"
             >
               Let&apos;s Talk
             </Link>
