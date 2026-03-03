@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// ✅ FIX 1: Proper TypeScript types (no more implicit `any`)
 type NavLink = {
   label: string;
   href: string;
@@ -16,7 +15,7 @@ const NAV_LINKS: NavLink[] = [
   { label: "Our Team", href: "#team" },
   { label: "Gallery", href: "#gallery" },
   { label: "Our Services", href: "#services" },
-  
+  { label: "Branding", href: "#branding" },
   {
     label: "Subsidiaries",
     href: "#subsidiaries",
@@ -36,7 +35,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  // ✅ FIX 2: Correct ref type for <ul>
   const dropdownRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -60,8 +58,6 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  // ✅ FIX 3: Single handler that closes ALL nav state on any link click
-  // Previously drawer stayed open after clicking a link
   const handleNavClick = () => {
     setMenuOpen(false);
     setActiveDropdown(null);
@@ -105,7 +101,6 @@ export default function Navbar() {
               <li key={item.label} className="relative">
                 {item.dropdown ? (
                   <>
-                    {/* ✅ FIX 4: Added type="button" to prevent accidental form submission */}
                     <button
                       type="button"
                       onClick={() =>
@@ -113,7 +108,7 @@ export default function Navbar() {
                       }
                       aria-expanded={activeDropdown === item.label}
                       aria-haspopup="true"
-                      className="group flex items-center gap-1 px-4 py-2 text-xs font-medium tracking-widest uppercase relative text-[#00ff64] hover:text-[#7A5518] transition-colors duration-200"
+                      className="group flex items-center gap-1 px-4 py-2 text-xs font-medium tracking-widest uppercase relative text-[#00ff64] hover:text-[#00ff64]/60 transition-colors duration-200"
                     >
                       {item.label}
                       <svg
@@ -126,12 +121,12 @@ export default function Navbar() {
                       >
                         <polyline points="2,4 6,8 10,4" />
                       </svg>
-                      <span className={`absolute bottom-0 left-4 right-4 h-px bg-[#7A5518] transition-transform duration-300 origin-left ${
+                      <span className={`absolute bottom-0 left-4 right-4 h-px bg-[#00ff64] transition-transform duration-300 origin-left ${
                         activeDropdown === item.label ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       }`} />
                     </button>
 
-                    {/* ✅ FIX 5: Added role="menu" for accessibility */}
+                    {/* Dropdown */}
                     <div
                       role="menu"
                       className={`absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 min-w-[210px] bg-[#111111] border border-[#C8973A]/20 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.7)] py-2 z-50 transition-all duration-200 ${
@@ -140,16 +135,16 @@ export default function Navbar() {
                           : "opacity-0 -translate-y-1.5 pointer-events-none"
                       }`}
                     >
-                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111111] border-l border-t text-[#00ff64]/20 rotate-45" />
+                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111111] border-l border-t border-[#C8973A]/20 rotate-45" />
                       {item.dropdown.map((sub) => (
                         <Link
                           key={sub.label}
                           href={sub.href}
                           role="menuitem"
                           onClick={handleNavClick}
-                          className="group/sub flex items-center gap-2.5 px-5 py-2.5 text-xs tracking-wide text-[#C8973A] hover:text-[#7A5518] hover:bg-black/40 transition-all duration-150"
+                          className="group/sub flex items-center gap-2.5 px-5 py-2.5 text-xs tracking-wide text-[#00ff64] hover:text-[#00ff64]/60 hover:bg-black/40 transition-all duration-150"
                         >
-                          <span className="w-1 h-1 rounded-full bg-[#C8973A] opacity-0 group-hover/sub:opacity-100 transition-opacity duration-150 flex-shrink-0" />
+                          <span className="w-1 h-1 rounded-full bg-[#00ff64] opacity-0 group-hover/sub:opacity-100 transition-opacity duration-150 flex-shrink-0" />
                           {sub.label}
                         </Link>
                       ))}
@@ -159,10 +154,10 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={handleNavClick}
-                    className="group relative flex items-center px-4 py-2 text-xs font-medium tracking-widest uppercase text-[#C8973A] hover:text-[#7A5518] transition-colors duration-200"
+                    className="group relative flex items-center px-4 py-2 text-xs font-medium tracking-widest uppercase text-[#00ff64] hover:text-[#00ff64]/60 transition-colors duration-200"
                   >
                     {item.label}
-                    <span className="absolute bottom-0 left-4 right-4 h-px bg-[#7A5518] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <span className="absolute bottom-0 left-4 right-4 h-px bg-[#00ff64] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                   </Link>
                 )}
               </li>
@@ -179,7 +174,6 @@ export default function Navbar() {
               Let&apos;s Talk
             </Link>
 
-            {/* ✅ FIX 6: Functional toggle using prev state — avoids stale closure */}
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
@@ -205,7 +199,7 @@ export default function Navbar() {
         }`}
       />
 
-      {/* ✅ FIX 7: Added id="mobile-drawer" to match aria-controls on hamburger */}
+      {/* Mobile Drawer */}
       <div
         id="mobile-drawer"
         role="dialog"
@@ -215,7 +209,7 @@ export default function Navbar() {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* ✅ FIX 8: Drawer logo is now a link, not just a div */}
+        {/* Drawer logo */}
         <div className="absolute top-5 left-7">
           <Link href="#home" onClick={handleNavClick}>
             <Image
@@ -239,12 +233,12 @@ export default function Navbar() {
                       setMobileExpanded(mobileExpanded === item.label ? null : item.label)
                     }
                     aria-expanded={mobileExpanded === item.label}
-                    className="flex items-center justify-between w-full py-4 border-b border-stone-800 text-sm font-medium tracking-widest uppercase text-[#C8973A] hover:text-[#7A5518] transition-colors duration-200 text-left"
+                    className="flex items-center justify-between w-full py-4 border-b border-stone-800 text-sm font-medium tracking-widest uppercase text-[#00ff64] hover:text-[#00ff64]/60 transition-colors duration-200 text-left"
                   >
                     {item.label}
                     <svg
                       viewBox="0 0 12 12" strokeWidth="2" strokeLinecap="round"
-                      strokeLinejoin="round" stroke="#C8973A" fill="none"
+                      strokeLinejoin="round" stroke="currentColor" fill="none"
                       className={`w-3 h-3 transition-transform duration-200 flex-shrink-0 ${
                         mobileExpanded === item.label ? "rotate-180" : ""
                       }`}
@@ -262,9 +256,9 @@ export default function Navbar() {
                         key={sub.label}
                         href={sub.href}
                         onClick={handleNavClick}
-                        className="flex items-center gap-3 pl-4 py-3 text-xs tracking-widest uppercase text-[#A0742A] hover:text-[#7A5518] border-b border-stone-800/50 transition-colors duration-150"
+                        className="flex items-center gap-3 pl-4 py-3 text-xs tracking-widest uppercase text-[#00ff64]/70 hover:text-[#00ff64]/40 border-b border-stone-800/50 transition-colors duration-150"
                       >
-                        <span className="w-1 h-1 rounded-full bg-[#C8973A] flex-shrink-0" />
+                        <span className="w-1 h-1 rounded-full bg-[#00ff64] flex-shrink-0" />
                         {sub.label}
                       </Link>
                     ))}
@@ -274,7 +268,7 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   onClick={handleNavClick}
-                  className="flex items-center py-4 border-b border-stone-800 text-sm font-medium tracking-widest uppercase text-[#C8973A] hover:text-[#7A5518] transition-colors duration-200"
+                  className="flex items-center py-4 border-b border-stone-800 text-sm font-medium tracking-widest uppercase text-[#00ff64] hover:text-[#00ff64]/60 transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -286,7 +280,7 @@ export default function Navbar() {
             <Link
               href="#contact"
               onClick={handleNavClick}
-              className="block text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase bg-[#00ff64] rounded-sm hover:bg-[#7A5518] transition-colors duration-200"
+              className="block text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm hover:bg-[#7A5518] transition-colors duration-200"
             >
               Let&apos;s Talk
             </Link>

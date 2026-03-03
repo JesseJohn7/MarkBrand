@@ -217,7 +217,7 @@ export default function PixelHero() {
         {/* STATS */}
         <div className="border-t border-b border-[rgba(0,255,100,0.12)] bg-[rgba(6,13,8,0.9)] backdrop-blur-md">
           <div className="max-w-4xl mx-auto grid grid-cols-3">
-            {[{n:500,s:"+",label:"Projects Completed"},{n:600,s:"+",label:"Happy Clients"},{n:7,s:"+",label:"Industry Awards"}].map((st,i)=>(
+            {[{n:500,s:"+",label:"Projects Completed"},{n:600,s:"+",label:"Happy Clients"},{n:7,s:"+",label:"Years"}].map((st,i)=>(
               <div key={i} className={`stat-item px-8 py-12 text-center ${i<2?"border-r border-[rgba(0,255,100,0.1)]":""}`}>
                 <div className="mono text-[clamp(34px,5vw,56px)] font-bold text-[#00ff64] leading-none mb-2.5"><Counter to={st.n} suffix={st.s}/></div>
                 <div className="text-[11px] tracking-[2px] text-[rgba(180,255,200,0.28)] uppercase">{st.label}</div>
