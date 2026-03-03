@@ -68,7 +68,7 @@ export default function Navbar() {
     <>
       {/* Gold accent top bar */}
       <div
-        className={`fixed top-0 left-0 right-0 h-0.5 z-[10000] bg-gradient-to-r from-transparent via-[#C8973A] to-transparent transition-opacity duration-500 ${
+        className={`fixed top-0 left-0 right-0 h-0.5 z-[10000] bg-gradient-to-r from-transparent via-[#00ff64] to-transparent transition-opacity duration-500 ${
           scrolled ? "opacity-100" : "opacity-0"
         }`}
       />
@@ -77,7 +77,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
           scrolled
-            ? "bg-[#0D0D0D]/95 backdrop-blur-xl shadow-[0_1px_0_rgba(200,151,58,0.2),0_8px_32px_rgba(0,0,0,0.5)] py-2"
+            ? "bg-[#0D0D0D]/95 backdrop-blur-xl shadow-[0_1px_0_rgba(0,255,100,0.15),0_8px_32px_rgba(0,0,0,0.5)] py-2"
             : "bg-transparent py-4"
         }`}
       >
@@ -129,13 +129,13 @@ export default function Navbar() {
                     {/* Dropdown */}
                     <div
                       role="menu"
-                      className={`absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 min-w-[210px] bg-[#111111] border border-[#C8973A]/20 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.7)] py-2 z-50 transition-all duration-200 ${
+                      className={`absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 min-w-[210px] bg-[#111111] border border-[#00ff64]/20 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.7)] py-2 z-50 transition-all duration-200 ${
                         activeDropdown === item.label
                           ? "opacity-100 translate-y-0 pointer-events-auto"
                           : "opacity-0 -translate-y-1.5 pointer-events-none"
                       }`}
                     >
-                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111111] border-l border-t border-[#C8973A]/20 rotate-45" />
+                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111111] border-l border-t border-[#00ff64]/20 rotate-45" />
                       {item.dropdown.map((sub) => (
                         <Link
                           key={sub.label}
@@ -169,7 +169,7 @@ export default function Navbar() {
             <Link
               href="#contact"
               onClick={handleNavClick}
-              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm border border-[#C8973A] hover:bg-[#7A5518] hover:border-[#7A5518] transition-all duration-200 flex-shrink-0"
+              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-[#0D0D0D] bg-[#00ff64] rounded-sm border border-[#00ff64] hover:bg-[#00cc50] hover:border-[#00cc50] transition-all duration-200 flex-shrink-0"
             >
               Let&apos;s Talk
             </Link>
@@ -180,7 +180,7 @@ export default function Navbar() {
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-drawer"
-              className="lg:hidden flex flex-col justify-center items-center gap-[6px] w-11 h-11 bg-[#C8973A] rounded-sm cursor-pointer hover:bg-[#7A5518] transition-colors duration-200 flex-shrink-0"
+              className="lg:hidden flex flex-col justify-center items-center gap-[6px] w-11 h-11 bg-[#00ff64] rounded-sm cursor-pointer hover:bg-[#00cc50] transition-colors duration-200 flex-shrink-0"
             >
               <span className={`block h-[2px] w-5 bg-[#0D0D0D] rounded-full transition-all duration-300 origin-center ${menuOpen ? "translate-y-[8px] rotate-45" : ""}`} />
               <span className={`block h-[2px] bg-[#0D0D0D] rounded-full transition-all duration-300 ${menuOpen ? "opacity-0 w-0" : "opacity-100 w-3"}`} />
@@ -205,7 +205,7 @@ export default function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`lg:hidden fixed top-0 right-0 h-[100dvh] w-[min(320px,85vw)] bg-[#0D0D0D] border-l-2 border-[#C8973A]/40 z-[9998] flex flex-col pt-20 pb-10 px-7 overflow-y-auto transition-transform duration-[380ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`lg:hidden fixed top-0 right-0 h-[100dvh] w-[min(320px,85vw)] bg-[#0D0D0D] border-l-2 border-[#00ff64]/40 z-[9998] flex flex-col pt-20 pb-10 px-7 overflow-y-auto transition-transform duration-[380ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -280,7 +280,7 @@ export default function Navbar() {
             <Link
               href="#contact"
               onClick={handleNavClick}
-              className="block text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm hover:bg-[#7A5518] transition-colors duration-200"
+              className="block text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase text-[#0D0D0D] bg-[#00ff64] rounded-sm hover:bg-[#00cc50] transition-colors duration-200"
             >
               Let&apos;s Talk
             </Link>
