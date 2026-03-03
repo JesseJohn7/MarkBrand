@@ -168,7 +168,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="#contact"
-              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm border border-[#C8973A] hover:bg-[#E5B96A] hover:shadow-[0_0_20px_rgba(200,151,58,0.35)] transition-all duration-200 flex-shrink-0"
+              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-[#ffffff] bg-[#C8973A] rounded-sm border border-[#C8973A] hover:bg-[#E5B96A] hover:shadow-[0_0_20px_rgba(200,151,58,0.35)] transition-all duration-200 flex-shrink-0"
             >
               Let's Talk
             </Link>
