@@ -101,7 +101,7 @@ export default function Navbar() {
                         )
                       }
                       aria-expanded={activeDropdown === item.label}
-                      className="group flex items-center gap-1 px-4 py-2 text-xs font-medium tracking-widest uppercase relative text-stone-400 hover:text-stone-100 transition-colors duration-200"
+                      className="group flex items-center gap-1 px-4 py-2 text-xs font-medium tracking-widest uppercase relative text-stone-400 hover:text-stone-300 transition-colors duration-200"
                     >
                       {item.label}
                       <svg
@@ -143,7 +143,7 @@ export default function Navbar() {
                           key={sub.label}
                           href={sub.href}
                           onClick={() => setActiveDropdown(null)}
-                          className="group/sub flex items-center gap-2.5 px-5 py-2.5 text-xs tracking-wide text-stone-400 hover:text-stone-100 hover:bg-[#C8973A]/10 transition-all duration-150"
+                          className="group/sub flex items-center gap-2.5 px-5 py-2.5 text-xs tracking-wide text-stone-400 hover:text-stone-300 hover:bg-[#C8973A]/10 transition-all duration-150"
                         >
                           <span className="w-1 h-1 rounded-full bg-[#C8973A] opacity-0 group-hover/sub:opacity-100 transition-opacity duration-150 flex-shrink-0" />
                           {sub.label}
@@ -154,7 +154,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="group relative flex items-center px-4 py-2 text-xs font-medium tracking-widest uppercase text-stone-400 hover:text-stone-100 transition-colors duration-200"
+                    className="group relative flex items-center px-4 py-2 text-xs font-medium tracking-widest uppercase text-stone-400 hover:text-stone-300 transition-colors duration-200"
                   >
                     {item.label}
                     <span className="absolute bottom-0 left-4 right-4 h-px bg-[#C8973A] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -168,7 +168,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="#contact"
-              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-[#ffffff] bg-[#C8973A] rounded-sm border border-[#C8973A] hover:bg-[#E5B96A] hover:shadow-[0_0_20px_rgba(200,151,58,0.35)] transition-all duration-200 flex-shrink-0"
+              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase text-[#0D0D0D] bg-[#C8973A] rounded-sm border border-[#C8973A] hover:bg-[#E5B96A] hover:shadow-[0_0_20px_rgba(200,151,58,0.35)] transition-all duration-200 flex-shrink-0"
             >
               Let's Talk
             </Link>
@@ -264,7 +264,7 @@ export default function Navbar() {
                         key={sub.label}
                         href={sub.href}
                         onClick={() => setMenuOpen(false)}
-                        className="flex items-center gap-2.5 pl-4 py-2.5 text-sm text-stone-400 hover:text-stone-100 border-b border-white/[0.04] transition-colors duration-150"
+                        className="flex items-center gap-2.5 pl-4 py-2.5 text-sm text-stone-400 hover:text-stone-300 border-b border-white/[0.04] transition-colors duration-150"
                       >
                         <span className="w-1 h-1 rounded-full bg-[#C8973A] flex-shrink-0" />
                         {sub.label}
