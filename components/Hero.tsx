@@ -61,8 +61,14 @@ export default function HeroSection() {
         />
 
         {/* ── OVERLAYS ── */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/50 via-transparent to-transparent" />
+        {/* bottom fade so text is always readable */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent" />
+        {/* left pull keeps headline clean */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/75 via-[#0A0A0A]/20 to-transparent" />
+        {/* green brand colour wash bottom-left */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#00ff64]/12 via-transparent to-transparent" />
+        {/* dark teal counter-balance top-right */}
+        <div className="absolute inset-0 bg-gradient-to-bl from-[#0A1A0F]/55 via-transparent to-transparent" />
 
         {/* ── TOP-RIGHT FLOATING STAT ── */}
         <div
