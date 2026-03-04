@@ -89,7 +89,7 @@ export default function AboutPage() {
             </p>
 
             <p className={`text-[0.76rem] sm:text-[0.8rem] text-stone-400/80 max-w-xs leading-relaxed mb-8 ${heroLoaded ? "fadeLeft" : "opacity-0"}`} style={{ animationDelay: "0.5s" }}>
-              From world-class print to bold identity design — we don't just build brands,{" "}
+              From world-class print to bold identity design  we don't just build brands,{" "}
               <span className="text-stone-200 font-medium">we build legacies.</span>
             </p>
 
