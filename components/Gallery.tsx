@@ -19,12 +19,12 @@ function useInView(threshold = 0.08) {
 }
 
 const GALLERY = [
-  { src: "/img1.jpg", label: "Brand Identity",   span: "lg:col-span-2 lg:row-span-2" },
-  { src: "/img2.jpg", label: "Print Design",      span: "" },
-  { src: "/img3.jpg", label: "Creative Studio",   span: "" },
-  { src: "/img4.jpg", label: "Visual Design",     span: "lg:col-span-2" },
-  { src: "/img5.jpg", label: "Photography",       span: "" },
-  { src: "/img6.jpg", label: "Media Production",  span: "" },
+  { src: "/img1.jpg", label: "Brand Identity" },
+  { src: "/img2.jpg", label: "Print Design" },
+  { src: "/img3.jpg", label: "Creative Studio" },
+  { src: "/img4.jpg", label: "Visual Design" },
+  { src: "/img5.jpg", label: "Photography" },
+  { src: "/img6.jpg", label: "Media Production" },
 ];
 
 export default function GallerySection() {
@@ -85,7 +85,7 @@ export default function GallerySection() {
           {/* ── HEADER ── */}
           <div className={`mb-14 ${section.inView ? "fadeLeft" : "opacity-0"}`}>
             <div className="flex items-center gap-3 mb-4">
-              <span className="h-px w-8 bg-[#00ff64] shrink-0" />
+              {/* <span className="h-px w-8 bg-[#00ff64] shrink-0" /> */}
               <span className="text-[0.55rem] tracking-[0.4em] uppercase text-[#00ff64]">Our Work in the World</span>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
@@ -98,9 +98,9 @@ export default function GallerySection() {
             </div>
           </div>
 
-          {/* ── MASONRY-STYLE BENTO GRID ── */}
+          {/* ── 3-COL CARD GRID ── */}
           <div
-            className={`grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-3 gap-3 sm:gap-4
+            className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6
               ${section.inView ? "fadeUp" : "opacity-0"}`}
             style={{ animationDelay: "0.15s" }}
           >
@@ -108,35 +108,40 @@ export default function GallerySection() {
               <div
                 key={i}
                 onClick={() => setActive(i)}
-                className={`gal-cell relative rounded-sm overflow-hidden cursor-pointer
-                  ${item.span}
-                  ${i === 0 ? "aspect-square lg:aspect-auto" : "aspect-square"}`}
-                style={{ animationDelay: `${i * 0.07}s` }}
+                className="gal-cell group relative bg-[#0A0A0A] border border-stone-800/70 rounded-sm overflow-hidden cursor-pointer transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,255,100,0.08)]"
+                style={{ animationDelay: `${i * 0.08}s` }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.src}
-                  alt={item.label}
-                  className="gal-img w-full h-full object-cover"
-                />
-                {/* dark overlay */}
-                <div className="gal-overlay absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/85 via-[#0A0A0A]/20 to-transparent" />
-                {/* green top shimmer */}
-                <div className="gal-overlay absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#00ff64]/70 to-transparent" />
-                {/* label */}
-                <div className="gal-label absolute bottom-4 left-4">
-                  <p className="text-[0.52rem] tracking-[0.28em] uppercase text-[#00ff64] mb-0.5 font-medium">{item.label}</p>
-                  <div className="h-px w-6 bg-[#00ff64]/50" />
-                </div>
-                {/* expand icon */}
-                <div className="gal-overlay absolute top-3 right-3">
-                  <div className="w-7 h-7 rounded-sm border border-white/20 bg-black/30 backdrop-blur-sm flex items-center justify-center">
-                    <svg viewBox="0 0 12 12" className="w-3 h-3 stroke-white/70" strokeWidth="1.5" fill="none">
-                      <polyline points="7,1 11,1 11,5" /><line x1="11" y1="1" x2="6" y2="6" />
-                      <polyline points="5,11 1,11 1,7" /><line x1="1" y1="11" x2="6" y2="6" />
-                    </svg>
+                {/* image */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.src}
+                    alt={item.label}
+                    className="gal-img w-full h-full object-cover object-top"
+                  />
+                  {/* top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#00ff64]/0 via-[#00ff64]/60 to-[#00ff64]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* expand icon */}
+                  <div className="gal-overlay absolute top-3 right-3">
+                    <div className="w-7 h-7 rounded-sm border border-white/20 bg-black/30 backdrop-blur-sm flex items-center justify-center">
+                      <svg viewBox="0 0 12 12" className="w-3 h-3 stroke-white/70" strokeWidth="1.5" fill="none">
+                        <polyline points="7,1 11,1 11,5" /><line x1="11" y1="1" x2="6" y2="6" />
+                        <polyline points="5,11 1,11 1,7" /><line x1="1" y1="11" x2="6" y2="6" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
+
+                {/* card footer */}
+                <div className="px-5 py-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="role-line h-px w-0 bg-[#00ff64] transition-all duration-300 group-hover:w-8" />
+                    <span className="text-[0.5rem] tracking-[0.3em] uppercase text-[#00ff64]/80 font-medium">{item.label}</span>
+                  </div>
+                </div>
+
+                {/* bottom glow */}
+                <div className="absolute bottom-0 left-5 right-5 h-px bg-gradient-to-r from-transparent via-[#00ff64]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             ))}
           </div>
@@ -147,20 +152,14 @@ export default function GallerySection() {
               href="https://www.facebook.com/MarkBrandNigeria/photos"
               target="_blank"
               rel="noopener noreferrer"
-              className="shimmer-btn group inline-flex items-center gap-4 px-8 py-4 border border-[#00ff64]/30 hover:border-[#00ff64]/70 hover:bg-[#00ff64]/5 transition-all duration-300 rounded-sm"
+              className="shimmer-btn group inline-flex items-center gap-3 px-8 py-4 border border-[#00ff64]/30 hover:border-[#00ff64]/70 hover:bg-[#00ff64]/5 transition-all duration-300 rounded-sm"
             >
               <span className="text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-[#00ff64]">
-                See More on Facebook
+                See More
               </span>
-              <span className="flex items-center gap-1.5">
-                {/* Facebook icon */}
-                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-[#00ff64]/70 group-hover:fill-[#00ff64] transition-colors duration-200">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                <svg viewBox="0 0 12 12" className="w-3 h-3 stroke-[#00ff64]/70 group-hover:stroke-[#00ff64] transition-all duration-300 group-hover:translate-x-1" strokeWidth="2" strokeLinecap="round" fill="none">
-                  <line x1="2" y1="6" x2="10" y2="6" /><polyline points="7,3 10,6 7,9" />
-                </svg>
-              </span>
+              <svg viewBox="0 0 12 12" className="w-3 h-3 stroke-[#00ff64]/70 group-hover:stroke-[#00ff64] transition-all duration-300 group-hover:translate-x-1" strokeWidth="2" strokeLinecap="round" fill="none">
+                <line x1="2" y1="6" x2="10" y2="6" /><polyline points="7,3 10,6 7,9" />
+              </svg>
             </a>
           </div>
         </div>
