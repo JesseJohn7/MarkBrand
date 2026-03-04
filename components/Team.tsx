@@ -97,7 +97,7 @@ export default function TeamSection() {
       <section
         ref={section.ref as React.RefObject<HTMLElement>}
         className="sans bg-[#0A0A0A] py-24 sm:py-32 px-5 sm:px-8 lg:px-16 overflow-hidden"
-      >
+        id="team">
         <div className="max-w-7xl mx-auto">
 
           {/* ── HEADER ── */}
