@@ -155,7 +155,7 @@ export default function ServicesSection() {
             </div>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
               <h2 className="serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
-                Our <span className="italic text-[#00ff64]">Services.</span>
+                 <span className="italic text-[#00ff64]"> Our Services.</span>
               </h2>
               <p className="text-[0.75rem] text-stone-500 max-w-sm leading-relaxed lg:text-right">
                 From the first print to a full brand identity — world-class creative and production services under one roof.
