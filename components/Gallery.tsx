@@ -79,7 +79,7 @@ export default function GallerySection() {
       <section
         ref={section.ref as React.RefObject<HTMLElement>}
         className="sans bg-[#0D0D0D] py-24 sm:py-32 px-5 sm:px-8 lg:px-16 overflow-hidden"
-      >
+        id="gallery">
         <div className="max-w-7xl mx-auto">
 
           {/* ── HEADER ── */}
