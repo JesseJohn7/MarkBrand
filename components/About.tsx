@@ -199,30 +199,8 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* ══════════ CTA ══════════ */}
-        <section ref={cta.ref as React.RefObject<HTMLElement>} className="relative py-28 px-6 overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #00ff64 1px, transparent 0)", backgroundSize: "36px 36px" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#00ff64]/5 rounded-full blur-[100px] pointer-events-none" />
-          <div className={`relative max-w-2xl mx-auto text-center ${cta.inView ? "fadeUp" : "opacity-0"}`}>
-            <p className="text-[0.58rem] tracking-[0.4em] uppercase text-[#00ff64] mb-4">Ready to Stand Out?</p>
-            <h2 className="serif text-4xl lg:text-6xl font-bold leading-[1.06] mb-6">
-              Let's <span className="text-[#00ff64]">Mark</span> Your Brand<br />
-              <span className="italic text-[#C8973A]">Outstanding</span>
-            </h2>
-            <p className="text-sm text-stone-400 mb-10 leading-relaxed">
-              Partner with Adamawa's leading branding and commercial printing company. We bring your vision to life with world-class quality and creative precision.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <a href="#contact" className="inline-flex items-center gap-3 px-8 py-4 text-[0.72rem] font-bold tracking-[0.15em] uppercase text-[#0A0A0A] bg-[#00ff64] rounded-sm hover:bg-[#00cc50] transition-all duration-200 shadow-[0_6px_30px_rgba(0,255,100,0.3)]">
-                Start a Project
-                <svg viewBox="0 0 12 12" className="w-3 h-3 stroke-current" strokeWidth="2.5" strokeLinecap="round" fill="none"><line x1="2" y1="6" x2="10" y2="6" /><polyline points="7,3 10,6 7,9" /></svg>
-              </a>
-              <a href="#services" className="inline-flex items-center gap-3 px-8 py-4 text-[0.72rem] font-bold tracking-[0.15em] uppercase text-[#00ff64] border border-[#00ff64]/30 rounded-sm hover:border-[#00ff64]/60 hover:bg-[#00ff64]/5 transition-all duration-200">
-                View Services
-              </a>
-            </div>
-          </div>
-        </section>
+        
+        
 
       </main>
     </>
