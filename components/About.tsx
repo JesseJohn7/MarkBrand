@@ -183,21 +183,7 @@ export default function AboutPage() {
         </div>
 
         {/* ══════════ QUOTE BANNER ══════════ */}
-        <div className="relative h-64 lg:h-80 overflow-hidden my-8">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&q=80" alt="Markbrand office" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/90 via-[#0A0A0A]/70 to-[#0A0A0A]/30" />
-          <div className="absolute inset-0 flex items-center px-8 lg:px-20">
-            <div className="max-w-2xl">
-              <p className="serif text-3xl lg:text-5xl font-bold italic text-stone-100 leading-tight">
-                "Marking you out —<br /><span className="text-[#00ff64]">one brand</span> at a time."
-              </p>
-              <div className="flex items-center gap-3 mt-4">
-                <span className="h-px w-8 bg-[#C8973A]" />
-                <span className="text-[0.56rem] tracking-[0.3em] uppercase text-[#C8973A]">Markbrand Nigeria Limited</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         
         
