@@ -101,19 +101,18 @@ export default function TeamSection() {
         <div className="max-w-7xl mx-auto">
 
           {/* ── HEADER ── */}
-          <div className={`mb-16 ${section.inView ? "fadeLeft" : "opacity-0"}`}>
-            <div className="flex items-center gap-3 mb-4">
+          <div className={`mb-16 text-center ${section.inView ? "fadeLeft" : "opacity-0"}`}>
+            <div className="flex items-center justify-center gap-3 mb-5">
               <span className="h-px w-8 bg-[#00ff64] shrink-0" />
               <span className="text-[0.55rem] tracking-[0.4em] uppercase text-[#00ff64]">The People Behind the Brand</span>
+              <span className="h-px w-8 bg-[#00ff64] shrink-0" />
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
-                Meet Our <span className="italic text-[#00ff64]">Team.</span>
-              </h2>
-              <p className="text-[0.75rem] text-stone-500 max-w-xs leading-relaxed">
-                A collective of creatives, strategists and print specialists dedicated to marking your brand out.
-              </p>
-            </div>
+            <h2 className="serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] mb-4">
+              Meet Our <span className="italic text-[#00ff64]">Team.</span>
+            </h2>
+            <p className="text-[0.75rem] text-stone-500 max-w-sm mx-auto leading-relaxed">
+              A collective of creatives, strategists and print specialists dedicated to marking your brand out.
+            </p>
           </div>
 
           {/* ── GRID ── */}
