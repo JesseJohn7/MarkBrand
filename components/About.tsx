@@ -84,7 +84,7 @@ export default function AboutPage() {
             </div>
 
             <p className={`text-[0.8rem] sm:text-sm text-stone-300/85 max-w-sm leading-relaxed mb-4 ${heroLoaded ? "fadeLeft" : "opacity-0"}`} style={{ animationDelay: "0.42s" }}>
-              We are <span className="text-white font-semibold">Markbrand Nigeria Limited</span> — Adamawa's most respected commercial printing and branding powerhouse. For over a decade we've helped businesses{" "}
+              We are <span className="text-white font-semibold">Markbrand Nigeria Limited</span>  Adamawa's most respected commercial printing and branding powerhouse. For over a decade we've helped businesses{" "}
               <span className="text-[#00ff64] font-medium">stand out, speak louder,</span> and compete on a global stage.
             </p>
 
