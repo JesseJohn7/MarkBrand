@@ -69,7 +69,7 @@ export default function AboutPage() {
           <div className="relative z-10 flex flex-col justify-center px-7 sm:px-12 lg:px-16 pt-32 pb-20 bg-[#0A0A0A]">
 
             <div className={`flex items-center gap-3 mb-6 ${heroLoaded ? "fadeLeft" : "opacity-0"}`} style={{ animationDelay: "0.1s" }}>
-              <span className="h-px w-8 bg-[#00ff64] shrink-0" />
+              {/* <span className="h-px w-8 bg-[#00ff64] shrink-0" /> */}
               <span className="text-[0.52rem] sm:text-[0.56rem] tracking-[0.4em] uppercase text-[#00ff64]">Our Story</span>
             </div>
 
