@@ -114,8 +114,8 @@ export default function HeroSection() {
             className={`flex items-center gap-4 mb-7 ${isLoaded ? "fadeUp" : "opacity-0"}`}
             style={{ animationDelay: "0.42s" }}
           >
-            <span className="h-px w-10 bg-[#00ff64]/50" />
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00ff64]/60" />
+            {/* <span className="h-px w-10 bg-[#00ff64]/50" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00ff64]/60" /> */}
           </div>
 
           {/* sub-copy */}
