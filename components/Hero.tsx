@@ -50,7 +50,7 @@ export default function HeroSection() {
         }
       `}</style>
 
-      <section className="sans relative min-h-screen flex items-end overflow-hidden bg-[#0A0A0A]">
+      <section className="sans relative min-h-screen flex items-end overflow-hidden bg-[#0A0A0A]" id="home">
 
         {/* ── BG IMAGE ── */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
