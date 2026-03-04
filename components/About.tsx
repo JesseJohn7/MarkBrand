@@ -107,8 +107,7 @@ export default function AboutPage() {
                 <svg viewBox="0 0 12 12" className="w-3 h-3 stroke-current" strokeWidth="2.5" strokeLinecap="round" fill="none"><line x1="2" y1="6" x2="10" y2="6" /><polyline points="7,3 10,6 7,9" /></svg>
               </a>
               <a href="#services" className="group inline-flex items-center gap-3 text-[0.66rem] font-semibold tracking-[0.14em] uppercase text-[#00ff64] hover:text-[#00e85a] transition-colors duration-200">
-                Our Services
-                <span className="block w-5 h-px bg-current transition-all duration-300 group-hover:w-10" />
+               
               </a>
             </div>
 
