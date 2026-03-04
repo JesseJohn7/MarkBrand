@@ -123,7 +123,7 @@ export default function HeroSection() {
             className={`text-[0.82rem] text-stone-300/85 max-w-lg leading-[1.85] mb-8 ${isLoaded ? "fadeUp" : "opacity-0"}`}
             style={{ animationDelay: "0.5s" }}
           >
-            We are <span className="text-white font-semibold">Markbrand Nigeria Limited</span> Adamawa's most trusted commercial printing and branding powerhouse. For over a decade, we've helped businesses, brands, and organisations{" "}
+            We are <span className="text-white font-semibold">Markbrand Nigeria Limited</span> Nigeria's most trusted commercial printing and branding powerhouse. For over a decade, we've helped businesses, brands, and organisations{" "}
             <span className="text-[#00ff64] font-medium">stand out, speak louder,</span> and compete on a global stage.
           </p>
 
