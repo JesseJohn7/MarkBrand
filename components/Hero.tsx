@@ -88,7 +88,7 @@ export default function HeroSection() {
             className={`flex items-center gap-3 mb-6 ${isLoaded ? "fadeUp" : "opacity-0"}`}
             style={{ animationDelay: "0.15s" }}
           >
-            <span className="h-px w-8 bg-[#00ff64]" />
+           {/*  <span className="h-px w-8 bg-[#00ff64]" /> */}
             <span className="text-[0.56rem] tracking-[0.42em] uppercase text-[#00ff64]">
               Nigeria's Premier Branding &amp; Print Studio
             </span>
