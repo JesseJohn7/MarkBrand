@@ -90,7 +90,7 @@ export default function GallerySection() {
             </div>
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
               <h2 className="serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
-                Crafted With <span className="italic text-[#00ff64]">Precision.</span>
+                 <span className="italic text-[#00ff64]">Crafted With Precision.</span>
               </h2>
               <p className="text-[0.75rem] text-stone-500 max-w-xs leading-relaxed">
                 A glimpse into the brands, prints and campaigns we've brought to life.
