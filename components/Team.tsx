@@ -103,7 +103,6 @@ export default function TeamSection() {
           {/* ── HEADER ── */}
           <div className={`mb-16 ${section.inView ? "fadeLeft" : "opacity-0"}`}>
             <div className="flex items-center gap-3 mb-5">
-              <span className="h-px w-8 bg-[#00ff64] shrink-0" />
               <span className="text-[0.55rem] tracking-[0.4em] uppercase text-[#00ff64]">The People Behind the Brand</span>
             </div>
             <h2 className="serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] mb-4">
