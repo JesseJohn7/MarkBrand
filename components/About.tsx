@@ -64,7 +64,7 @@ export default function AboutPage() {
         <section
           ref={hero.ref as React.RefObject<HTMLElement>}
           className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden"
-        >
+          id="about">
           {/* ── LEFT: text panel ── */}
           <div className="relative z-10 flex flex-col justify-center px-7 sm:px-12 lg:px-16 pt-32 pb-20 bg-[#0A0A0A]">
 
