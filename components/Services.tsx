@@ -150,7 +150,7 @@ export default function ServicesSection() {
             className={`mb-16 ${headerRef.inView ? "fadeLeft" : "opacity-0"}`}
           >
             <div className="flex items-center gap-3 mb-5">
-              <span className="h-px w-8 bg-[#00ff64] shrink-0" />
+             {/*  <span className="h-px w-8 bg-[#00ff64] shrink-0" /> */}
               <span className="text-[0.55rem] tracking-[0.4em] uppercase text-[#00ff64]">What We Do</span>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
