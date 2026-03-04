@@ -79,8 +79,8 @@ export default function AboutPage() {
             </h1>
 
             <div className={`flex items-center gap-3 mb-7 ${heroLoaded ? "fadeLeft" : "opacity-0"}`} style={{ animationDelay: "0.32s" }}>
-              <span className="h-px w-10 bg-[#00ff64]/50" />
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00ff64]/60" />
+              {/* <span className="h-px w-10 bg-[#00ff64]/50" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00ff64]/60" /> */}
             </div>
 
             <p className={`text-[0.8rem] sm:text-sm text-stone-300/85 max-w-sm leading-relaxed mb-4 ${heroLoaded ? "fadeLeft" : "opacity-0"}`} style={{ animationDelay: "0.42s" }}>
