@@ -75,7 +75,7 @@ export default function HeroSection() {
           className={`absolute top-32 right-8 lg:right-16 text-right ${isLoaded ? "fadeRight" : "opacity-0"}`}
           style={{ animationDelay: "0.7s" }}
         >
-          <p className="text-[0.52rem] tracking-[0.35em] uppercase text-[#00ff64]/70 mb-1">Adamawa, Nigeria</p>
+         {/*  <p className="text-[0.52rem] tracking-[0.35em] uppercase text-[#00ff64]/70 mb-1">Adamawa, Nigeria</p> */}
           <p className="serif text-5xl font-bold text-[#00ff64] leading-none">10+</p>
           <p className="text-[0.52rem] tracking-[0.2em] uppercase text-stone-400 mt-1">Years of Excellence</p>
         </div>
