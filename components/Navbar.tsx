@@ -86,9 +86,9 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-8">
 
           {/* Logo */}
-          <button type="button" onClick={() => handleClick("#home")} className="flex items-center flex-shrink-0 group" aria-label="Home">
-            <Image src="/logo.png" alt="MarkBrand Group Nigeria" width={180} height={60} className="h-11 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75" priority />
-          </button>
+         <button type="button" onClick={() => handleClick("#home")} className="flex items-center flex-shrink-0 group" aria-label="Home">
+          <Image src="/logo.png" alt="MarkBrand Group Nigeria" width={240} height={80} className="h-20 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75" priority />
+        </button>
 
           {/* Desktop links */}
           <ul ref={dropdownRef} className="hidden lg:flex items-center list-none m-0 p-0">
