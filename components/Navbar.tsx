@@ -145,11 +145,11 @@ export default function Navbar() {
           {/* CTA + hamburger */}
           <div className="flex items-center gap-4">
            <Link
-  href="/shop"
-  className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase rounded-sm border border-amber-400 bg-amber-400 text-[#1e0f08] hover:bg-amber-300 hover:border-amber-300 transition-all duration-200 flex-shrink-0"
->
-  Shop Now
-</Link>
+            href="/shop"
+            className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase rounded-sm border border-amber-400 bg-[#00ff64] text-[#1e0f08] hover:bg-amber-300 hover:border-amber-300 transition-all duration-200 flex-shrink-0"
+          >
+            Shop Now
+          </Link>
             <button
               type="button"
               onClick={() => setMenuOpen((p) => !p)}
