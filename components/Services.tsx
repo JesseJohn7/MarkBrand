@@ -59,13 +59,13 @@ const SERVICES = [
   {
     num: "01", Icon: PrintIcon,
     title: "Commercial Printing", tagline: "World-Class Print, Every Time",
-    description: "From business cards to large-format banners, our sheet-fed and digital presses deliver crisp, vibrant output at any scale. We handle brochures, flyers, letterheads, packaging, and everything in between — with rigorous quality control at every stage.",
+    description: "From business cards to large-format banners, our sheet-fed vibrant output at any scale.",
     features: ["Large-Format Printing", "Digital & Offset", "Packaging & Labels", "Corporate Stationery"],
   },
   {
     num: "02", Icon: BrandIcon,
     title: "Creative Branding", tagline: "Identities That Endure",
-    description: "We craft bold, strategic brand identities that communicate who you are before you say a word. Logo design, brand guidelines, visual systems, packaging — we build the full picture so your business looks the part on every surface.",
+    description: "We craft bold, strategic brand identities that communicate who you are before you say a word. Logo design, brand guidelines, visual systems, packaging .",
     features: ["Logo & Identity Design", "Brand Guidelines", "Visual Systems", "Packaging Design"],
   },
   {
