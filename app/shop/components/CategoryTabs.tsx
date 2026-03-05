@@ -8,7 +8,7 @@ interface Props {
 
 export default function CategoryTabs({ active, onChange }: Props) {
   return (
-    <div className="sticky top-[52px] z-40 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-stone-800/50">
+    <div className="sticky top-[52px] z-40 bg-black backdrop-blur-xl border-b border-stone-800/50">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 overflow-x-auto" style={{ scrollbarWidth:"none" }}>
         <div className="flex min-w-max">
           {CATEGORIES.map(cat => {
