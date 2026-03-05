@@ -77,7 +77,7 @@ const SERVICES = [
   {
     num: "04", Icon: MediaIcon,
     title: "Media Production", tagline: "Content That Moves People",
-    description: "Full-service media production — from concept to final cut. We produce commercials, brand films, social content, and documentary-style videos that capture your brand's essence and engage audiences across every platform.",
+    description: "Full-service media production from concept to final cut. We produce commercials",
     features: ["Brand Films & Commercials", "Social Media Content", "Motion Graphics", "Post-Production"],
   },
   {
