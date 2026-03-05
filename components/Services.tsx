@@ -83,7 +83,7 @@ const SERVICES = [
   {
     num: "05", Icon: FashionIcon,
     title: "Fashion & Tailoring", tagline: "Style That Represents Your Brand",
-    description: "Custom uniforms, branded corporate wear, and fashion pieces crafted to make your team look unified and professional. From fabric selection to final stitch, every garment reflects your brand's identity with precision.",
+    description: "Custom uniforms, branded corporate wear, and fashion pieces",
     features: ["Corporate Uniforms", "Branded Apparel", "Event Outfits", "Bespoke Tailoring"],
   },
   {
