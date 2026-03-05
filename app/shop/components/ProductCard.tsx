@@ -9,7 +9,7 @@ export default function ProductCard({ product }: { product: Product }) {
     ? Math.round((1 - product.price / product.originalPrice) * 100) : null;
 
   return (
-    <div className="group relative bg-[#326811] border border-stone-800/60 rounded-sm overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:border-stone-600 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+    <div className="group relative bg-[#5c3d2e] border border-stone-800/60 rounded-sm overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:border-stone-600 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
 
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden shrink-0">
@@ -64,7 +64,7 @@ export default function ProductCard({ product }: { product: Product }) {
             {formatPrice(product.price)}
           </span>
           {product.originalPrice && (
-            <span className="text-[0.6rem] text-stone-600 line-through">
+            <span className="text-[0.6rem] text-stone-400 line-through">
               {formatPrice(product.originalPrice)}
             </span>
           )}
