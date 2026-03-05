@@ -65,7 +65,7 @@ const SERVICES = [
   {
     num: "02", Icon: BrandIcon,
     title: "Creative Branding", tagline: "Identities That Endure",
-    description: "We craft bold, strategic brand identities that communicate who you are before you say a word. Logo design, brand guidelines, visual systems, packaging .",
+    description: "We craft bold, strategic brand identities that communicate who you are before you say a word.",
     features: ["Logo & Identity Design", "Brand Guidelines", "Visual Systems", "Packaging Design"],
   },
   {
