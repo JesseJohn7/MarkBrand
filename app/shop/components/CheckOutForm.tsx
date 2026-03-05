@@ -77,7 +77,7 @@ export default function CheckoutForm() {
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4">
-            <span className="h-px w-8 bg-[#00ff64] shrink-0" />
+            {/* <span className="h-px w-8 bg-[#00ff64] shrink-0" /> */}
             <span className="text-[0.52rem] tracking-[0.4em] uppercase text-slate-500">Checkout</span>
           </div>
           <h1 className="font-[Cormorant_Garamond,serif] text-4xl sm:text-5xl font-bold text-stone-100">
