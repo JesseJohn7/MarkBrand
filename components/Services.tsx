@@ -180,7 +180,7 @@ export default function ServicesSection() {
                 style={{ animationDelay: `${i * 0.08}s` }}
               >
                 {/* ghost number */}
-                <span className="svc-num absolute top-4 right-5 serif text-7xl font-bold text-stone-800 leading-none select-none pointer-events-none">
+                <span className="svc-num absolute top-4 right-5 serif text-7xl font-bold text-stone-300 leading-none select-none pointer-events-none">
                   {svc.num}
                 </span>
 
