@@ -19,8 +19,8 @@ export default function CategoryTabs({ active, onChange }: Props) {
             return (
               <button key={cat.id}
                 onClick={() => onChange(cat.id as "all" | Category)}
-                className={`px-4 sm:px-6 py-4 text-[0.5rem] tracking-[0.26em] uppercase font-medium border-b-2 transition-all duration-200 whitespace-nowrap flex items-center gap-2 ${
-                  isActive ? "border-slate-400 text-[#00ff64]" : "border-transparent text-stone-500 hover:text-stone-300"
+                className={`px-4 sm:px-6 py-4 text-[0.5rem] tracking-[0.26em] uppercase font-bold border-b-2 transition-all duration-200 whitespace-nowrap flex items-center gap-2 ${
+                  isActive ? "border-slate-400 text-slate-100" : "border-transparent text-stone-500 font-black hover:text-stone-300"
                 }`}>
                 {cat.label}
                 <span className={`text-[0.4rem] px-1.5 py-0.5 rounded-sm font-bold transition-colors ${
