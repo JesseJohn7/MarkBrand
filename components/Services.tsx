@@ -71,7 +71,7 @@ const SERVICES = [
   {
     num: "03", Icon: PhotoIcon,
     title: "Photography", tagline: "Visuals That Tell Your Story",
-    description: "Professional photography tailored for brands — product shoots, corporate portraits, event coverage, and editorial imagery. Every frame is composed to elevate your brand and make a lasting impression across print and digital.",
+    description: "Professional photography tailored for brands  product shoots, corporate portraits, event coverage. ",
     features: ["Product Photography", "Corporate Portraits", "Event Coverage", "Editorial Shoots"],
   },
   {
