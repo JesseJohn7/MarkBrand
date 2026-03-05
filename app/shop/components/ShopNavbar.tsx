@@ -34,7 +34,7 @@ export default function ShopNavbar() {
             <svg viewBox="0 0 12 12" className="w-3 h-3 stroke-stone-400 group-hover:stroke-amber-300 group-hover:-translate-x-0.5 transition-all" strokeWidth="2" strokeLinecap="round" fill="none">
               <line x1="10" y1="6" x2="2" y2="6"/><polyline points="5,3 2,6 5,9"/>
             </svg>
-            <span className="hidden sm:inline text-[0.5rem] tracking-[0.3em] uppercase text-stone-400 group-hover:text-amber-300 transition-colors">
+            <span className="hidden sm:inline text-[0.5rem] tracking-[0.3em] uppercase text-stone-200 group-hover:text-amber-300 transition-colors">
               Main Site
             </span>
           </Link>
