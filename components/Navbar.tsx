@@ -226,9 +226,12 @@ export default function Navbar() {
           ))}
 
           <div className="mt-auto pt-8">
-            <button type="button" onClick={() => handleClick("/shop")} className="block w-full text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase text-[#0D0D0D] bg-[#00ff64] rounded-sm hover:bg-[#00cc50] transition-colors duration-200">
-              Let&apos;s Talk
-            </button>
+            <Link
+            href="/shop"
+            className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase rounded-sm border border-amber-400 bg-[#00ff64] text-[#1e0f08] hover:bg-amber-300 hover:border-amber-300 transition-all duration-200 flex-shrink-0"
+          >
+            Shop Now
+          </Link>
           </div>
 
           <p className="mt-6 text-[0.6rem] tracking-[0.2em] uppercase text-stone-700 text-center">
