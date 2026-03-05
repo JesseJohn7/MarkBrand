@@ -35,7 +35,7 @@ export default function CheckoutForm() {
   if (items.length === 0 && !submitted) return (
     <div className="pt-28 min-h-screen flex flex-col items-center justify-center gap-6 px-5 text-center">
       <p className="font-[Cormorant_Garamond,serif] text-3xl font-bold text-black">Your cart is empty</p>
-      <Link href="/shop" className="text-[0.6rem] tracking-[0.25em] uppercase text-[#00ff64] hover:text-[#00e85a] transition-colors">
+      <Link href="/shop" className="text-[0.6rem] tracking-[0.25em] uppercase text-stone-800 hover:text-stone-500 font-bold transition-colors">
         ← Back to Shop
       </Link>
     </div>
