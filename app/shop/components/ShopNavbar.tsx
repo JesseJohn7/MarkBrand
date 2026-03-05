@@ -35,7 +35,7 @@ export default function ShopNavbar() {
               <line x1="10" y1="6" x2="2" y2="6"/><polyline points="5,3 2,6 5,9"/>
             </svg>
             <span className="hidden sm:inline text-[0.5rem] tracking-[0.3em] uppercase text-stone-200 group-hover:text-amber-300 transition-colors">
-              Main Site
+              Back to Website
             </span>
           </Link>
 
