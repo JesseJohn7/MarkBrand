@@ -14,10 +14,11 @@ const NAV_LINKS: NavLink[] = [
     dropdown: [
       { label: "Our Story",    href: "#about" },
       { label: "Our Team",     href: "#team" },
-      { label: "Our Services", href: "#services" },
+      { label: "Gallery", href: "#gallery" },
     ],
   },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Our Services", href: "#services" },
+  
   {
     label: "Subsidiaries",
     href: "#subsidiaries",
