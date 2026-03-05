@@ -207,7 +207,7 @@ export default function ServicesSection() {
                 {/* feature pills */}
                 <div className="relative z-10 flex flex-wrap gap-2 mb-5">
                   {svc.features.map((f) => (
-                    <span key={f} className="feature-pill px-3 py-1 text-[0.46rem] tracking-[0.18em] uppercase border border-stone-800 text-stone-600 rounded-sm">
+                    <span key={f} className="feature-pill px-3 py-1 text-[0.46rem] tracking-[0.18em] uppercase border border-stone-800 text-stone-300 rounded-sm">
                       {f}
                     </span>
                   ))}
