@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type SubLink = { label: string; href: string };
 type NavLink = { label: string; href: string; dropdown?: SubLink[] };
@@ -223,9 +224,18 @@ export default function Navbar() {
           ))}
 
           <div className="mt-auto pt-8">
-            <button type="button" onClick={() => handleClick("#contact")} className="block w-full text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase text-[#0D0D0D] bg-[#00ff64] rounded-sm hover:bg-[#00cc50] transition-colors duration-200">
-              Let&apos;s Talk
-            </button>
+           <Link
+            href="/shop"
+            className="block w-full text-center py-3.5 text-xs font-semibold tracking-[0.14em] uppercase rounded-sm transition-all duration-200"
+            style={{
+              background: "#f59e0b",
+              color: "#1e0f08",
+            }}
+            onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = "#fbbf24")}
+            onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = "#f59e0b")}
+          >
+            Shop Now
+          </Link>
           </div>
 
           <p className="mt-6 text-[0.6rem] tracking-[0.2em] uppercase text-stone-700 text-center">

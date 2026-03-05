@@ -44,7 +44,7 @@ export default function ShopNavbar() {
             <span className="font-[Cormorant_Garamond,serif] text-xl sm:text-2xl font-bold text-stone-100 leading-none group-hover:text-amber-200 transition-colors">
               Markbrand
             </span>
-            <span className="text-[0.4rem] tracking-[0.45em] uppercase text-amber-400/80 mt-0.5">Shop</span>
+            <span className="text-[0.4rem] font-bold tracking-[0.45em] uppercase text-amber-400/80 mt-0.5">Shop</span>
           </Link>
 
           {/* Right side */}
