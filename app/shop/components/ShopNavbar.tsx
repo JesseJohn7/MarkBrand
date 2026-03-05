@@ -49,10 +49,10 @@ export default function ShopNavbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-5">
-            <Link href="/shop" className="hidden md:block text-[0.52rem] tracking-[0.28em] uppercase text-stone-400 hover:text-amber-300 transition-colors">
+            <Link href="/shop" className="hidden md:block text-[0.52rem] tracking-[0.28em] uppercase text-stone-200 hover:text-amber-300 transition-colors">
               Products
             </Link>
-            <Link href="/shop/checkout" className="hidden md:block text-[0.52rem] tracking-[0.28em] uppercase text-stone-400 hover:text-amber-300 transition-colors">
+            <Link href="/shop/checkout" className="hidden md:block text-[0.52rem] tracking-[0.28em] uppercase text-stone-200 hover:text-amber-300 transition-colors">
               Checkout
             </Link>
 
