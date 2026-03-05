@@ -89,7 +89,7 @@ const SERVICES = [
   {
     num: "06", Icon: EduIcon,
     title: "Digital Education", tagline: "Knowledge That Empowers Growth",
-    description: "Through our Swift Trading Academy and digital learning programmes, we equip entrepreneurs and professionals with the skills to thrive — from business development and digital marketing to financial literacy.",
+    description: "Through our Swift Trading Academy and digital learning programmes",
     features: ["Business Development", "Digital Marketing", "Financial Literacy", "Entrepreneurship"],
   },
 ];
