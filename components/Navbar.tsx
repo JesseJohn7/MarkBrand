@@ -87,7 +87,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <button type="button" onClick={() => handleClick("#home")} className="flex items-center flex-shrink-0 group" aria-label="Home">
-            <Image src="/logo.png" alt="MarkBrand Group Nigeria" width={140} height={48} className="h-11 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75" priority />
+            <Image src="/logo.png" alt="MarkBrand Group Nigeria" width={180} height={60} className="h-11 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75" priority />
           </button>
 
           {/* Desktop links */}

@@ -200,7 +200,7 @@ export default function ServicesSection() {
                 </div>
 
                 {/* description */}
-                <p className="relative z-10 text-[0.74rem] text-stone-500 leading-relaxed mb-6">
+                <p className="relative z-10 text-[0.74rem] text-white leading-relaxed mb-6">
                   {svc.description}
                 </p>
 
