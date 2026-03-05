@@ -23,7 +23,7 @@ export default function ShopNavbar() {
     <>
       {/* ── Navbar bar ── */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled 
           ? "bg-[#0D0D0D]/95 backdrop-blur-xl shadow-[0_1px_0_rgba(0,255,100,0.12)] py-2"
           : "bg-[#0A0A0A] border-b border-stone-800/50 py-3"
       }`}>
