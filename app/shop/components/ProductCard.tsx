@@ -269,12 +269,12 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
                   </>
                 )}
               </button>
-              <button className="px-4 py-3 border border-stone-700 rounded-sm text-stone-400 hover:border-stone-500 hover:text-rose-400 transition-all duration-200"
+             {/*  <button className="px-4 py-3 border border-stone-700 rounded-sm text-stone-400 hover:border-stone-500 hover:text-rose-400 transition-all duration-200"
                 aria-label="Add to wishlist">
                 <svg viewBox="0 0 16 16" className="w-3.5 h-3.5 stroke-current" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none">
                   <path d="M8 13.5S2 9.5 2 5.5a3.5 3.5 0 017-0.5 3.5 3.5 0 017 .5c0 4-6 8-6 8z"/>
                 </svg>
-              </button>
+              </button> */}
             </div>
 
             {/* ── Delivery strip ── */}
