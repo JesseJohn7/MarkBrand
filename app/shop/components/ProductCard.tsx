@@ -265,7 +265,7 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
                       <circle cx="6" cy="13" r="1"/><circle cx="13" cy="13" r="1"/>
                       <path d="M1 1h2l1.5 7.5h8L14 5H4"/>
                     </svg>
-                    {product.digital ? "Get Download" : "Add to Cart"}
+                    {product.digital ? "Add to Cart" : "Add to Cart"}
                   </>
                 )}
               </button>
