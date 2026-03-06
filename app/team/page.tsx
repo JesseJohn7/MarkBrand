@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
+import Navbar from "@/components/Navbar";
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLElement | null>(null);
   const [inView, setInView] = useState(false);
@@ -94,6 +94,7 @@ export default function TeamSection() {
         }
       `}</style>
 
+      <Navbar/>
       <section
         ref={section.ref as React.RefObject<HTMLElement>}
         className="sans bg-[#0A0A0A] py-24 sm:py-32 px-5 sm:px-8 lg:px-16 overflow-hidden"
