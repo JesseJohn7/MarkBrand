@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
+
 type SubLink = { label: string; href: string };
 type NavLink = { label: string; href: string; dropdown?: SubLink[] };
 
@@ -12,13 +14,12 @@ const NAV_LINKS: NavLink[] = [
     label: "About",
     href: "#about",
     dropdown: [
-      { label: "Our Story",    href: "#about" },
-      { label: "Our Team",     href: "#team" },
-      { label: "Gallery", href: "#gallery" },
+      { label: "Our Story", href: "#about" },
+      { label: "Our Team",  href: "/team" },  // ← routes to /team page
+      { label: "Gallery",   href: "#gallery" },
     ],
   },
   { label: "Our Services", href: "#services" },
-  
   {
     label: "Subsidiaries",
     href: "#subsidiaries",
@@ -33,8 +34,7 @@ const NAV_LINKS: NavLink[] = [
   },
 ];
 
-function scrollToSection(href: string) {
-  const id = href.replace("#", "");
+function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
   const top = el.getBoundingClientRect().top + window.scrollY - 72;
@@ -42,6 +42,10 @@ function scrollToSection(href: string) {
 }
 
 export default function Navbar() {
+  const router   = useRouter();
+  const pathname = usePathname();
+  const isHome   = pathname === "/";
+
   const [scrolled,       setScrolled]       = useState(false);
   const [menuOpen,       setMenuOpen]       = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -73,12 +77,37 @@ export default function Navbar() {
     setMenuOpen(false);
     setActiveDropdown(null);
     setMobileExpanded(null);
-    setTimeout(() => scrollToSection(href), wasOpen ? 350 : 0);
+
+    // Real route (e.g. "/team") — just navigate
+    if (href.startsWith("/")) {
+      router.push(href);
+      return;
+    }
+
+    const id = href.replace("#", "");
+
+    if (isHome) {
+      // Already on home — smooth scroll
+      setTimeout(() => scrollToSection(id), wasOpen ? 350 : 0);
+    } else {
+      // On /team or any other page — go home then scroll to section
+      router.push(`/#${id}`);
+    }
+  };
+
+  const handleLogoClick = () => {
+    setMenuOpen(false);
+    setActiveDropdown(null);
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/");
+    }
   };
 
   return (
     <>
-      {/* top green line */}
+      {/* Top green line */}
       <div className={`fixed top-0 left-0 right-0 h-0.5 z-[10000] bg-gradient-to-r from-transparent via-[#00ff64] to-transparent transition-opacity duration-500 ${scrolled ? "opacity-100" : "opacity-0"}`} />
 
       {/* ── NAV ── */}
@@ -86,9 +115,10 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-8">
 
           {/* Logo */}
-         <button type="button" onClick={() => handleClick("#home")} className="flex items-center flex-shrink-0 group" aria-label="Home">
-          <Image src="/logo.png" alt="MarkBrand Group Nigeria" width={200} height={60} className="h-17 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75" priority />
-        </button>
+          <button type="button" onClick={handleLogoClick} className="flex items-center flex-shrink-0 group" aria-label="Home">
+            <Image src="/logo.png" alt="MarkBrand Group Nigeria" width={200} height={60}
+              className="h-17 w-auto object-contain transition-opacity duration-200 group-hover:opacity-75" priority />
+          </button>
 
           {/* Desktop links */}
           <ul ref={dropdownRef} className="hidden lg:flex items-center list-none m-0 p-0">
@@ -104,22 +134,19 @@ export default function Navbar() {
                       className="group flex items-center gap-1 px-4 py-2 text-xs font-medium tracking-widest uppercase relative text-[#00ff64] hover:text-[#00ff64]/60 transition-colors duration-200"
                     >
                       {item.label}
-                      <svg viewBox="0 0 12 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="currentColor" fill="none" className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.label ? "rotate-180" : ""}`} aria-hidden="true">
+                      <svg viewBox="0 0 12 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                        stroke="currentColor" fill="none"
+                        className={`w-3 h-3 transition-transform duration-200 ${activeDropdown === item.label ? "rotate-180" : ""}`}>
                         <polyline points="2,4 6,8 10,4" />
                       </svg>
                       <span className={`absolute bottom-0 left-4 right-4 h-px bg-[#00ff64] transition-transform duration-300 origin-left ${activeDropdown === item.label ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
                     </button>
 
-                    <div
-                      role="menu"
-                      className={`absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 min-w-[200px] bg-[#111111] border border-[#00ff64]/20 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.7)] py-2 z-50 transition-all duration-200 ${activeDropdown === item.label ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-1.5 pointer-events-none"}`}
-                    >
+                    <div role="menu"
+                      className={`absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 min-w-[200px] bg-[#111111] border border-[#00ff64]/20 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.7)] py-2 z-50 transition-all duration-200 ${activeDropdown === item.label ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-1.5 pointer-events-none"}`}>
                       <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#111111] border-l border-t border-[#00ff64]/20 rotate-45" />
                       {item.dropdown.map((sub) => (
-                        <button
-                          key={sub.label}
-                          type="button"
-                          role="menuitem"
+                        <button key={sub.label} type="button" role="menuitem"
                           onClick={() => handleClick(sub.href)}
                           className="group/sub flex items-center gap-2.5 w-full text-left px-5 py-2.5 text-xs tracking-wide text-[#00ff64] hover:text-[#00ff64]/60 hover:bg-black/40 transition-all duration-150"
                         >
@@ -130,9 +157,7 @@ export default function Navbar() {
                     </div>
                   </>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={() => handleClick(item.href)}
+                  <button type="button" onClick={() => handleClick(item.href)}
                     className="group relative flex items-center px-4 py-2 text-xs font-medium tracking-widest uppercase text-[#00ff64] hover:text-[#00ff64]/60 transition-colors duration-200"
                   >
                     {item.label}
@@ -145,14 +170,11 @@ export default function Navbar() {
 
           {/* CTA + hamburger */}
           <div className="flex items-center gap-4">
-           <Link
-            href="/shop"
-            className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase rounded-sm border border--400 bg-[#00ff64] text-[#1e0f08] hover:bg-amber-300 hover:border-amber-300 transition-all duration-200 flex-shrink-0"
-          >
-            Shop Now
-          </Link>
-            <button
-              type="button"
+            <Link href="/shop"
+              className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase rounded-sm bg-[#00ff64] text-[#1e0f08] hover:bg-amber-300 transition-all duration-200 flex-shrink-0">
+              Shop Now
+            </Link>
+            <button type="button"
               onClick={() => setMenuOpen((p) => !p)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
@@ -168,18 +190,15 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile backdrop */}
-      <div onClick={() => setMenuOpen(false)} aria-hidden="true" className={`lg:hidden fixed inset-0 bg-black/70 z-[9997] transition-opacity duration-300 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} />
+      <div onClick={() => setMenuOpen(false)} aria-hidden="true"
+        className={`lg:hidden fixed inset-0 bg-black/70 z-[9997] transition-opacity duration-300 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} />
 
       {/* ── MOBILE DRAWER ── */}
-      <div
-        id="mobile-drawer"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation menu"
-        className={`lg:hidden fixed top-0 right-0 h-[100dvh] w-[min(320px,85vw)] bg-[#0D0D0D] border-l-2 border-[#00ff64]/40 z-[9998] flex flex-col pt-20 pb-10 px-7 overflow-y-auto transition-transform duration-[380ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
-      >
+      <div id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation menu"
+        className={`lg:hidden fixed top-0 right-0 h-[100dvh] w-[min(320px,85vw)] bg-[#0D0D0D] border-l-2 border-[#00ff64]/40 z-[9998] flex flex-col pt-20 pb-10 px-7 overflow-y-auto transition-transform duration-[380ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+
         <div className="absolute top-5 left-7">
-          <button type="button" onClick={() => handleClick("#home")} aria-label="Home">
+          <button type="button" onClick={handleLogoClick} aria-label="Home">
             <Image src="/logo.png" alt="MarkBrand Group Nigeria" width={110} height={38} className="h-9 w-auto object-contain" />
           </button>
         </div>
@@ -189,22 +208,21 @@ export default function Navbar() {
             <div key={item.label}>
               {item.dropdown ? (
                 <>
-                  <button
-                    type="button"
+                  <button type="button"
                     onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
                     aria-expanded={mobileExpanded === item.label}
                     className="flex items-center justify-between w-full py-4 border-b border-stone-800 text-sm font-medium tracking-widest uppercase text-[#00ff64] hover:text-[#00ff64]/60 transition-colors duration-200 text-left"
                   >
                     {item.label}
-                    <svg viewBox="0 0 12 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="currentColor" fill="none" className={`w-3 h-3 transition-transform duration-200 flex-shrink-0 ${mobileExpanded === item.label ? "rotate-180" : ""}`} aria-hidden="true">
+                    <svg viewBox="0 0 12 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                      stroke="currentColor" fill="none"
+                      className={`w-3 h-3 transition-transform duration-200 flex-shrink-0 ${mobileExpanded === item.label ? "rotate-180" : ""}`}>
                       <polyline points="2,4 6,8 10,4" />
                     </svg>
                   </button>
                   <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileExpanded === item.label ? "max-h-96" : "max-h-0"}`}>
                     {item.dropdown.map((sub) => (
-                      <button
-                        key={sub.label}
-                        type="button"
+                      <button key={sub.label} type="button"
                         onClick={() => handleClick(sub.href)}
                         className="flex items-center gap-3 w-full text-left pl-4 py-3 text-xs tracking-widest uppercase text-[#00ff64]/70 hover:text-[#00ff64]/40 border-b border-stone-800/50 transition-colors duration-150"
                       >
@@ -215,8 +233,7 @@ export default function Navbar() {
                   </div>
                 </>
               ) : (
-                <button
-                  type="button"
+                <button type="button"
                   onClick={() => handleClick(item.href)}
                   className="flex items-center w-full text-left py-4 border-b border-stone-800 text-sm font-medium tracking-widest uppercase text-[#00ff64] hover:text-[#00ff64]/60 transition-colors duration-200"
                 >
@@ -227,12 +244,10 @@ export default function Navbar() {
           ))}
 
           <div className="mt-auto pt-8">
-            <Link
-            href="/shop"
-            className="hidden lg:inline-flex items-center px-5 py-2 text-[0.72rem] font-semibold tracking-[0.12em] uppercase rounded-sm border border-amber-400 bg-[#00ff64] text-[#1e0f08] hover:bg-amber-300 hover:border-amber-300 transition-all duration-200 flex-shrink-0"
-          >
-            Shop Now
-          </Link>
+            <Link href="/shop"
+              className="inline-flex items-center justify-center w-full px-5 py-3 text-[0.72rem] font-semibold tracking-[0.12em] uppercase rounded-sm bg-[#00ff64] text-[#1e0f08] hover:bg-amber-300 transition-all duration-200">
+              Shop Now
+            </Link>
           </div>
 
           <p className="mt-6 text-[0.6rem] tracking-[0.2em] uppercase text-stone-700 text-center">
