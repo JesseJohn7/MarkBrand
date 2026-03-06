@@ -247,7 +247,7 @@ export default function ProductGrid() {
   const [activePriceRange,  setActivePriceRange]  = useState<number | null>(null);
   const [activeBadges,      setActiveBadges]      = useState<string[]>([]);
   const [search,            setSearch]            = useState("");
-  const [sort,              setSort]              = useState("default");
+
   const [searchFocused,     setSearchFocused]     = useState(false);
   const [sidebarOpen,       setSidebarOpen]       = useState(false);
   const [expandedSections,  setExpandedSections]  = useState<string[]>(["category", "subcategory", "price", "badge"]);
@@ -293,12 +293,8 @@ export default function ProductGrid() {
         p.description.toLowerCase().includes(search.toLowerCase())
       );
 
-    if (sort === "price-asc")  list = [...list].sort((a, b) => a.price - b.price);
-    if (sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
-    if (sort === "name-asc")   list = [...list].sort((a, b) => a.name.localeCompare(b.name));
-    if (sort === "newest")     list = [...list].sort((a, b) => (b.badge === "New" ? 1 : 0) - (a.badge === "New" ? 1 : 0));
     return list;
-  }, [activeCategory, activeSubCategory, activePriceRange, activeBadges, search, sort]);
+  }, [activeCategory, activeSubCategory, activePriceRange, activeBadges, search]);
 
   /* shared props for SidebarFilters */
   const sidebarProps: SidebarFiltersProps = {
@@ -388,35 +384,7 @@ export default function ProductGrid() {
           )}
         </div>
 
-        {/* Results count */}
-        <span className="text-[0.6rem] text-stone-400 font-medium hidden sm:block">
-          {filtered.length} product{filtered.length !== 1 ? "s" : ""}
-        </span>
 
-        {/* Sort */}
-        <div className="relative sm:ml-auto">
-          <select
-            value={sort}
-            onChange={e => setSort(e.target.value)}
-            className="appearance-none pl-3.5 pr-8 py-2.5 text-[0.65rem] rounded-xl outline-none cursor-pointer transition-all duration-200"
-            style={{
-              background: "#fff",
-              border: "1.5px solid rgba(0,0,0,0.09)",
-              color: "rgba(0,0,0,0.6)",
-              fontFamily: "'DM Mono', monospace",
-            }}
-          >
-            <option value="default">Featured</option>
-            <option value="newest">Newest First</option>
-            <option value="price-asc">Price ↑</option>
-            <option value="price-desc">Price ↓</option>
-            <option value="name-asc">A → Z</option>
-          </select>
-          <svg viewBox="0 0 8 8" className="absolute right-2.5 top-1/2 -translate-y-1/2 w-2 h-2 pointer-events-none"
-            stroke="rgba(0,0,0,0.35)" strokeWidth="2" fill="none">
-            <polyline points="1,2 4,6 7,2" />
-          </svg>
-        </div>
       </div>
 
       {/* ── ACTIVE FILTER CHIPS ── */}
