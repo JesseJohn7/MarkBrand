@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
-
+import Footer from "@/components/Footer"
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLElement | null>(null);
   const [inView, setInView] = useState(false);
@@ -168,6 +168,7 @@ export default function TeamSection() {
           </div>
         </div>
       </section>
+      
     </>
   );
 }
