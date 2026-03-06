@@ -345,43 +345,63 @@ export default function ProductGrid() {
         </button>
 
         {/* Search */}
-        <div className="relative flex-1 max-w-sm">
-          <svg
-            viewBox="0 0 16 16"
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 pointer-events-none transition-colors duration-200"
-            stroke={searchFocused ? "#c2410c" : "rgba(0,0,0,0.32)"}
-            strokeWidth="1.5"
-            fill="none"
-          >
-            <circle cx="7" cy="7" r="4.5" /><line x1="10.5" y1="10.5" x2="13.5" y2="13.5" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            onFocus={() => setSearchFocused(true)}
-            onBlur={() => setSearchFocused(false)}
-            className="w-full pl-9 pr-9 py-2.5 text-[0.72rem] rounded-xl outline-none transition-all duration-200"
-            style={{
-              background: "#fff",
-              border: `1.5px solid ${searchFocused ? "rgba(194,65,12,0.45)" : "rgba(0,0,0,0.09)"}`,
-              color: "#111",
-              fontFamily: "'DM Mono', monospace",
-              boxShadow: searchFocused ? "0 0 0 3px rgba(194,65,12,0.08)" : "none",
-            }}
-          />
-          {search && (
-            <button
-              onClick={() => setSearch("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center rounded-full transition-all duration-150"
-              style={{ background: "rgba(0,0,0,0.07)" }}
+        <div className="flex flex-1 max-w-2xl">
+          <div className="relative flex-1">
+            <svg
+              viewBox="0 0 16 16"
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 pointer-events-none transition-colors duration-200"
+              stroke={searchFocused ? "#c2410c" : "rgba(0,0,0,0.32)"}
+              strokeWidth="1.5"
+              fill="none"
             >
-              <svg viewBox="0 0 10 10" className="w-2 h-2" stroke="rgba(0,0,0,0.5)" strokeWidth="2" fill="none">
-                <line x1="2" y1="2" x2="8" y2="8" /><line x1="8" y1="2" x2="2" y2="8" />
-              </svg>
-            </button>
-          )}
+              <circle cx="7" cy="7" r="4.5" /><line x1="10.5" y1="10.5" x2="13.5" y2="13.5" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search products, categories, keywords..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
+              className="w-full pl-9 pr-9 py-2.5 text-[0.72rem] rounded-l-xl outline-none transition-all duration-200"
+              style={{
+                background: "#fff",
+                border: `1.5px solid ${searchFocused ? "rgba(194,65,12,0.45)" : "rgba(0,0,0,0.09)"}`,
+                borderRight: "none",
+                color: "#111",
+                fontFamily: "'DM Mono', monospace",
+                boxShadow: searchFocused ? "0 0 0 3px rgba(194,65,12,0.08)" : "none",
+              }}
+            />
+            {search && (
+              <button
+                onClick={() => setSearch("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center rounded-full transition-all duration-150"
+                style={{ background: "rgba(0,0,0,0.07)" }}
+              >
+                <svg viewBox="0 0 10 10" className="w-2 h-2" stroke="rgba(0,0,0,0.5)" strokeWidth="2" fill="none">
+                  <line x1="2" y1="2" x2="8" y2="8" /><line x1="8" y1="2" x2="2" y2="8" />
+                </svg>
+              </button>
+            )}
+          </div>
+          {/* Search button */}
+          <button
+            onClick={() => {}}
+            className="flex items-center gap-2 px-5 py-2.5 text-[0.65rem] font-bold tracking-[0.14em] uppercase rounded-r-xl shrink-0 transition-all duration-200"
+            style={{
+              background: searchFocused ? "#c2410c" : "#0f0f0f",
+              color: "#fff",
+              fontFamily: "'DM Mono', monospace",
+            }}
+            onMouseEnter={e => { if (!searchFocused) (e.currentTarget as HTMLElement).style.background = "#c2410c"; }}
+            onMouseLeave={e => { if (!searchFocused) (e.currentTarget as HTMLElement).style.background = "#0f0f0f"; }}
+          >
+            <svg viewBox="0 0 16 16" className="w-3.5 h-3.5 stroke-current" strokeWidth="1.8" fill="none">
+              <circle cx="7" cy="7" r="4.5" /><line x1="10.5" y1="10.5" x2="13.5" y2="13.5" />
+            </svg>
+            <span className="hidden sm:inline">Search</span>
+          </button>
         </div>
 
 
@@ -423,15 +443,23 @@ export default function ProductGrid() {
       <div className="flex gap-6">
 
         {/* ── DESKTOP SIDEBAR ── */}
-        <aside className="hidden lg:block w-56 shrink-0 self-start sticky top-24">
-          <div className="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm">
-            <div className="px-4 py-3 border-b border-stone-100 flex items-center justify-between">
+        <aside className="hidden lg:block w-56 shrink-0 self-start sticky top-24" style={{ maxHeight: "calc(100vh - 7rem)" }}>
+          <div className="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm flex flex-col" style={{ maxHeight: "calc(100vh - 7rem)" }}>
+            {/* Fixed header */}
+            <div className="px-4 py-3 border-b border-stone-100 flex items-center justify-between shrink-0">
               <span className="text-[0.6rem] font-black tracking-[0.2em] uppercase text-stone-800">Filters</span>
               {activeFilterCount > 0 && (
                 <span className="text-[0.5rem] font-bold text-stone-400">{activeFilterCount} active</span>
               )}
             </div>
-            <div className="py-2">
+            {/* Scrollable filter body */}
+            <div
+              className="flex-1 overflow-y-auto py-2 scrollbar-thin"
+              style={{
+                scrollbarWidth: "thin",
+                scrollbarColor: "rgba(0,0,0,0.12) transparent",
+              }}
+            >
               <SidebarFilters {...sidebarProps} />
             </div>
           </div>
