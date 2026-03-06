@@ -168,7 +168,7 @@ export default function TeamSection() {
           </div>
         </div>
       </section>
-      
+      <Footer/>
     </>
   );
 }
