@@ -6,7 +6,7 @@ export type SubCategory =
   // print-jobs
   | "cards" | "banners" | "flyers" | "booklets" | "stickers"
   // fashion
-  | "t-shirts" | "polos" | "hoodies" | "caps" | "jackets" | "uniforms" | "accessories"
+  | "t-shirts" | "polos" | "hoodies" | "caps" | "jackets" | "uniforms" | "accessories" | "underwear"
   // digital
   | "brand-identity" | "templates" | "ebooks" | "hr-docs" | "services";
 
@@ -70,6 +70,7 @@ export const CATEGORIES: {
       { id: "caps",        label: "Caps & Hats"     },
       { id: "jackets",     label: "Jackets"         },
       { id: "uniforms",    label: "Staff Uniforms"  },
+      { id: "underwear",   label: "Underwear"       },
       { id: "accessories", label: "Accessories"     },
     ],
   },
@@ -535,6 +536,72 @@ export const PRODUCTS: Product[] = [
     details:["Hi-visibility yellow","Reflective strips","Screen-printed name","Sizes: S–XXL"],
     image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
     inStock:true,
+  },
+
+  // ══ FASHION — UNDERWEAR ══════════════════════════════════════════════════════
+  {
+    id:"fashion-022", slug:"boxer-briefs", category:"fashion", subCategory:"underwear",
+    name:"Branded Boxer Briefs", price:4500,
+    description:"Soft cotton-spandex boxer briefs with your logo waistband. Comfortable fit for everyday wear.",
+    details:["95% cotton 5% spandex","Elasticated logo waistband","Sizes: S–3XL","3 colours: Black, Navy, Grey","MOQ: 10 pieces"],
+    image:"https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=80",
+    badge:"New", inStock:true,
+  },
+  {
+    id:"fashion-023", slug:"boxers-shorts", category:"fashion", subCategory:"underwear",
+    name:"Branded Boxer Shorts", price:4000,
+    description:"Loose-fit woven boxer shorts with printed logo. Breathable and relaxed for all-day comfort.",
+    details:["100% woven cotton","Printed logo waistband","Elastic waist","Sizes: S–3XL","MOQ: 10 pieces"],
+    image:"https://images.unsplash.com/photo-1591195853828-11db59a44f43?w=600&q=80",
+    badge:"Popular", inStock:true,
+  },
+  {
+    id:"fashion-024", slug:"trunks", category:"fashion", subCategory:"underwear",
+    name:"Branded Trunks (Short Leg)", price:4200,
+    description:"Short-leg trunks with stretch fabric and embossed logo waistband. Sleek and modern fit.",
+    details:["92% cotton 8% elastane","Embossed logo waistband","Flat-lock seams","Sizes: S–3XL","MOQ: 10 pieces"],
+    image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80",
+    badge:"New", inStock:true,
+  },
+  {
+    id:"fashion-025", slug:"briefs", category:"fashion", subCategory:"underwear",
+    name:"Branded Classic Briefs", price:3500,
+    description:"Classic-cut briefs with your logo on the waistband. Great for corporate gifting and staff packs.",
+    details:["100% combed cotton","Logo waistband","Sizes: S–3XL","White, Black, Navy","MOQ: 12 pieces"],
+    image:"https://images.unsplash.com/photo-1543087903-1ac2ec7aa8c5?w=600&q=80",
+    inStock:true,
+  },
+  {
+    id:"fashion-026", slug:"long-johns", category:"fashion", subCategory:"underwear",
+    name:"Thermal Long Johns Set", price:9500,
+    description:"Branded thermal long johns top and bottom set. Warm, stretchy, ideal for cold-season staff wear.",
+    details:["Top + Bottom set","Thermal fleece lining","Printed logo","Sizes: S–2XL","MOQ: 5 sets"],
+    image:"https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80",
+    badge:"Popular", inStock:true,
+  },
+  {
+    id:"fashion-027", slug:"vest-singlet", category:"fashion", subCategory:"underwear",
+    name:"Branded Vest / Singlet", price:3000,
+    description:"Ribbed cotton vest with subtle printed logo at chest. Lightweight everyday innerwear.",
+    details:["100% ribbed cotton","Chest logo print","Sizes: S–3XL","White & Black","MOQ: 10 pieces"],
+    image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&q=80",
+    inStock:true,
+  },
+  {
+    id:"fashion-028", slug:"sports-bra", category:"fashion", subCategory:"underwear",
+    name:"Branded Sports Bra", price:5500,
+    description:"Medium-support sports bra with logo print. Perfect for branded activewear sets and events.",
+    details:["85% nylon 15% spandex","Medium support","Logo print","Sizes: XS–2XL","Moisture-wicking","MOQ: 10 pieces"],
+    image:"https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=600&q=80",
+    badge:"New", inStock:true,
+  },
+  {
+    id:"fashion-029", slug:"underwear-gift-set", category:"fashion", subCategory:"underwear",
+    name:"Branded Underwear Gift Pack (3-in-1)", price:12000, originalPrice:15000,
+    description:"Premium gift pack with 3 branded boxer briefs in a custom-printed box. Perfect corporate gift.",
+    details:["3 boxer briefs","Custom gift box","Mixed colours","Sizes: S–3XL","Ribbon & tissue paper","MOQ: 5 sets"],
+    image:"https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80",
+    badge:"Sale", inStock:true,
   },
 
   // ══ FASHION — ACCESSORIES ════════════════════════════════════════════════════
