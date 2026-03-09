@@ -544,7 +544,7 @@ export const PRODUCTS: Product[] = [
     name:"Branded Boxer Briefs", price:4500,
     description:"Soft cotton-spandex boxer briefs with your logo waistband. Comfortable fit for everyday wear.",
     details:["95% cotton 5% spandex","Elasticated logo waistband","Sizes: S–3XL","3 colours: Black, Navy, Grey","MOQ: 10 pieces"],
-    image:"https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=80",
+    image:"/boxer.webp",
     badge:"New", inStock:true,
   },
   {
@@ -552,7 +552,7 @@ export const PRODUCTS: Product[] = [
     name:"Branded Boxer Shorts", price:4000,
     description:"Loose-fit woven boxer shorts with printed logo. Breathable and relaxed for all-day comfort.",
     details:["100% woven cotton","Printed logo waistband","Elastic waist","Sizes: S–3XL","MOQ: 10 pieces"],
-    image:"https://images.unsplash.com/photo-1591195853828-11db59a44f43?w=600&q=80",
+    image:"/boxers.webp",
     badge:"Popular", inStock:true,
   },
   {
