@@ -1,219 +1,362 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+
+const MARQUEE_ITEMS = [
+  "Commercial Printing",
+  "Creative Branding",
+  "Photography",
+  "Media Production",
+  "Fashion & Tailoring",
+  "Digital Education",
+  "Marking You Out!",
+  "The World Is Your Market",
+];
+
+const STATS = [
+  { value: "10+",    label: "Years of Excellence" },
+  { value: "200+",   label: "Satisfied Clients"   },
+  { value: "1,500+", label: "Projects Delivered"  },
+  { value: "6",      label: "Subsidiaries"        },
+];
+
+const TAGS = ["Est. 2014", "Adamawa, Nigeria", "6 Subsidiaries", "1,500+ Projects"];
 
 export default function HeroSection() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsLoaded(true);
+    if (!marqueeRef.current) return;
+    const doubled = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
+    marqueeRef.current.innerHTML = doubled
+      .map(
+        (item) =>
+          `<span style="display:inline-flex;align-items:center;gap:1rem;padding:0 1.8rem;font-size:0.63rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#d1d5db;white-space:nowrap;font-family:'DM Sans',sans-serif;">
+            ${item}
+            <span style="width:5px;height:5px;border-radius:50%;background:#00ff64;flex-shrink:0;display:inline-block;"></span>
+          </span>`
+      )
+      .join("");
   }, []);
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
-        .serif { font-family: 'Cormorant Garamond', serif; }
-        .sans  { font-family: 'Montserrat', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap');
 
-        @keyframes fadeUp    { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
-        @keyframes fadeRight { from { opacity:0; transform:translateX(28px); }  to { opacity:1; transform:translateX(0); } }
-        @keyframes fadeLeft  { from { opacity:0; transform:translateX(-28px); } to { opacity:1; transform:translateX(0); } }
-        @keyframes kenBurns  { from { transform:scale(1); } to { transform:scale(1.06); } }
-        @keyframes pulseLine { 0%,100% { opacity:0.6; } 50% { opacity:0.15; } }
-        @keyframes marquee   { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-
-        .hero-img  { animation: kenBurns 16s ease-out both; }
-        .fadeUp    { animation: fadeUp    0.85s cubic-bezier(0.4,0,0.2,1) both; }
-        .fadeRight { animation: fadeRight 0.85s cubic-bezier(0.4,0,0.2,1) both; }
-        .fadeLeft  { animation: fadeLeft  0.85s cubic-bezier(0.4,0,0.2,1) both; }
-        .pulse-ln  { animation: pulseLine 2.2s ease-in-out infinite; }
-
-        .shimmer-btn::after {
-          content:''; position:absolute; inset:0;
-          background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.18) 50%,transparent 60%);
-          transform:translateX(-100%); transition:transform 0.55s ease;
+        @keyframes revealUp {
+          from { opacity: 0; transform: translateY(60px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-        .shimmer-btn:hover::after { transform:translateX(100%); }
-
-        .underline-green {
-          position: relative;
-          display: inline-block;
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-        .underline-green::after {
-          content: '';
-          position: absolute;
-          left: 0; bottom: -4px;
-          width: 100%; height: 3px;
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes pulseGreen {
+          0%,100% { box-shadow: 0 0 0 0 rgba(0,255,100,.5); }
+          60%     { box-shadow: 0 0 0 10px rgba(0,255,100,0); }
+        }
+        @keyframes kenBurns {
+          from { transform: scale(1.0); }
+          to   { transform: scale(1.06); }
+        }
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        @keyframes lineExpand {
+          from { width: 0; opacity: 0; }
+          to   { width: 48px; opacity: 1; }
+        }
+
+        .hero-font { font-family: 'DM Sans', sans-serif; }
+
+        /* Headline — DM Serif Display for the big words */
+        .hl-clip { overflow: hidden; line-height: 1; }
+        .hl-line {
+          display: block;
+          font-family: 'DM Serif Display', serif;
+          font-weight: 400;
+          font-size: clamp(3.4rem, 7.5vw, 7.5rem);
+          line-height: 1.0;
+          letter-spacing: -0.02em;
+          color: #ffffff;
+          opacity: 0;
+          animation: revealUp 0.9s cubic-bezier(.22,1,.36,1) forwards;
+        }
+        .hl-line.hl-accent {
+          font-style: italic;
+          color: #00ff64;
+        }
+
+        .anim-fade-up { opacity: 0; animation: fadeUp 0.75s cubic-bezier(.22,1,.36,1) forwards; }
+        .anim-fade-in { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+
+        .eyebrow-dot { animation: pulseGreen 2.2s ease-in-out infinite; }
+        .bg-image { animation: kenBurns 20s ease-out both; }
+        .marquee-track { animation: marquee 30s linear infinite; }
+
+        .divider-line {
+          height: 1px;
+          background: linear-gradient(to right, #00ff64, transparent);
+          animation: lineExpand 0.8s ease forwards;
+          opacity: 0;
+        }
+
+        .stat-num {
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 800;
+          font-size: clamp(2rem, 3vw, 2.6rem);
+          color: #ffffff;
+          line-height: 1;
+          letter-spacing: -0.03em;
+        }
+        .stat-label {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.6rem;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.45);
+          margin-top: 0.35rem;
+        }
+
+        .cta-green {
           background: #00ff64;
-          border-radius: 2px;
+          color: #0a0a0a;
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 700;
+          font-size: 0.72rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 14px 32px;
+          border-radius: 3px;
+          transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+          box-shadow: 0 6px 28px rgba(0,255,100,0.3);
+        }
+        .cta-green:hover {
+          background: #00e85a;
+          box-shadow: 0 10px 36px rgba(0,255,100,0.45);
+          transform: translateY(-1px);
+        }
+        .cta-outline {
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 700;
+          font-size: 0.72rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 13px 28px;
+          border-radius: 3px;
+          border: 1.5px solid rgba(255,255,255,0.3);
+          color: rgba(255,255,255,0.85);
+          transition: border-color 0.18s, color 0.18s, background 0.18s;
+        }
+        .cta-outline:hover {
+          border-color: #00ff64;
+          color: #ffffff;
+          background: rgba(0,255,100,0.04);
+        }
+
+        .pill-tag {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.6rem;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.7);
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 999px;
+          padding: 5px 13px;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          backdrop-filter: blur(6px);
         }
       `}</style>
 
-      <section className="sans relative min-h-screen flex items-end overflow-hidden bg-[#0A0A0A]" id="home">
-
-        {/* ── BG IMAGE ── */}
+      <section
+        id="home"
+        className="relative min-h-screen flex flex-col justify-end overflow-hidden bg-[#0A0A0A] hero-font"
+      >
+        {/* ── BACKGROUND ── */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/heroimg.jpg"
-          alt="Markbrand hero"
-          className="hero-img absolute inset-0 w-full h-full object-cover object-[center_20%]"
+          src="/heroiii.jpg"
+          alt="Markbrand Nigeria"
+          className="bg-image absolute inset-0 w-full h-full object-cover object-[center_25%]"
         />
 
-        {/* ── OVERLAYS ── */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/75 via-[#0A0A0A]/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#00ff64]/12 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-bl from-[#0A1A0F]/55 via-transparent to-transparent" />
+        {/* Layered overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/75 to-[#0A0A0A]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/85 via-[#0A0A0A]/30 to-transparent" />
 
-        {/* ── TOP-RIGHT FLOATING STAT ── */}
-        <div
-          className={`absolute top-32 right-8 lg:right-16 text-right ${isLoaded ? "fadeRight" : "opacity-0"}`}
-          style={{ animationDelay: "0.7s" }}
-        >
-          {/* Bigger stat number + bolder label */}
-          <p className="serif text-6xl lg:text-7xl font-bold text-[#00ff64] leading-none">10+</p>
-          <p className="text-[0.65rem] tracking-[0.25em] uppercase text-stone-300 font-semibold mt-1.5">Years of Excellence</p>
-        </div>
+        {/* ── CONTENT ── */}
+        <div className="relative z-10 px-6 sm:px-10 lg:px-16 xl:px-20 pb-12 pt-32">
 
-        {/* ── MAIN CONTENT ── */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 pb-20 lg:pb-32 pt-48">
-
-          {/* eyebrow — bigger, bolder */}
+          {/* Eyebrow tag */}
           <div
-            className={`flex items-center gap-3 mb-7 ${isLoaded ? "fadeUp" : "opacity-0"}`}
+            className="anim-fade-in flex items-center gap-3 mb-7"
             style={{ animationDelay: "0.15s" }}
           >
-            <span className="h-px w-8 bg-[#00ff64]" />
-            <span className="text-[0.7rem] tracking-[0.38em] uppercase text-[#00ff64] font-bold">
-              Nigeria's Premier Branding &amp; Print Studio
-            </span>
+           
           </div>
 
-          {/* ── HEADLINE — significantly larger + heavier ── */}
-          <h1
-            className={`serif leading-[1.0] mb-5 ${isLoaded ? "fadeUp" : "opacity-0"}`}
-            style={{ animationDelay: "0.3s" }}
-          >
-            {/* line 1 */}
-            <span className="block text-[clamp(3.4rem,9.5vw,8.2rem)] font-bold text-stone-100 tracking-tight" style={{ fontWeight: 700 }}>
-              Your Brand Deserves
-            </span>
-            {/* line 2 — italic accent */}
-            <span className="block text-[clamp(3.4rem,9.5vw,8.2rem)] font-bold italic text-[#00ff64] tracking-tight" style={{ fontWeight: 700 }}>
-              To Be Unforgettable.
-            </span>
-          </h1>
+          {/* ── HEADLINE ── */}
+          <div className="mb-8 space-y-0.5">
+            {[
+              { text: "Your Brand",     accent: false, delay: "0.3s"  },
+              { text: "Deserves To Be", accent: true,  delay: "0.46s" },
+              { text: "Unforgettable.", accent: false, delay: "0.62s" },
+            ].map(({ text, accent, delay }) => (
+              <div className="hl-clip" key={text}>
+                <span className={`hl-line${accent ? " hl-accent" : ""}`} style={{ animationDelay: delay }}>
+                  {text}
+                </span>
+              </div>
+            ))}
+          </div>
 
-          {/* sub-copy — bigger, brighter, heavier */}
-          <p
-            className={`text-[0.95rem] text-stone-200/90 max-w-xl leading-[1.9] mb-8 font-medium ${isLoaded ? "fadeUp" : "opacity-0"}`}
-            style={{ animationDelay: "0.5s" }}
-          >
-            We are <span className="text-white font-bold">Markbrand Nigeria Limited</span> — Nigeria's most trusted commercial printing and branding powerhouse. For over a decade, we've helped businesses, brands, and organisations{" "}
-            <span className="text-[#00ff64] font-bold">stand out, speak louder,</span> and compete on a global stage.
-          </p>
+          {/* Divider */}
+         
 
-          {/* punchline — larger and more visible */}
-          <p
-            className={`text-[0.9rem] text-stone-300/90 max-w-lg leading-relaxed mb-10 font-medium ${isLoaded ? "fadeUp" : "opacity-0"}`}
-            style={{ animationDelay: "0.56s" }}
-          >
-            From world-class print to bold identity design — we don't just build brands, we build{" "}
-            <em className="text-white not-italic font-bold">legacies.</em>
-          </p>
+          {/* ── COPY BLOCK — full width, single column ── */}
 
-          {/* tag pills — larger text, bolder, more visible */}
+          {/* Who we are */}
           <div
-            className={`flex flex-wrap gap-2.5 mb-10 ${isLoaded ? "fadeUp" : "opacity-0"}`}
-            style={{ animationDelay: "0.64s" }}
+            className="anim-fade-up mb-7 max-w-[640px]"
+            style={{ animationDelay: "0.88s" }}
           >
-            {["Est. 2014", "Adamawa, Nigeria", "6 Subsidiaries", "1500+ Projects"].map((tag) => (
+            {/* Company name line — big and unmissable */}
+            <p
+              className="mb-4 leading-tight"
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "clamp(1.15rem, 2vw, 1.4rem)",
+                fontWeight: 400,
+                color: "#ffffff",
+                letterSpacing: "0.01em",
+              }}
+            >
+              We are{" "}
               <span
-                key={tag}
-                className="px-4 py-1.5 text-[0.65rem] tracking-[0.18em] uppercase border border-stone-600/80 text-stone-300 font-semibold bg-black/40 backdrop-blur-sm rounded-sm"
+                style={{
+                  fontWeight: 800,
+                  color: "#ffffff",
+                  fontSize: "clamp(1.15rem, 2vw, 1.4rem)",
+                  letterSpacing: "-0.01em",
+                }}
               >
+                Markbrand Nigeria Limited
+              </span>
+            </p>
+
+            {/* Description — broken into readable punchy lines */}
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "clamp(0.95rem, 1.35vw, 1.05rem)",
+                fontWeight: 400,
+                lineHeight: 1.9,
+                color: "#ffffff",
+              }}
+            >
+              Nigeria's most respected{" "}
+              <span style={{ color: "#ffffff", fontWeight: 600 }}>
+                commercial printing &amp; branding powerhouse
+              </span>{" "}
+              — helping businesses{" "}
+              <span style={{ color: "#ffffff", fontWeight: 600 }}>
+                stand out, speak louder,
+              </span>{" "}
+              and compete on a global stage for over a decade.
+              <br />
+              <span
+                style={{
+                  display: "inline-block",
+                  marginTop: "0.5rem",
+                  color: "#ffffff",
+                  fontWeight: 700,
+                  fontSize: "clamp(0.97rem, 1.4vw, 1.08rem)",
+                  letterSpacing: "0.005em",
+                }}
+              >
+                We don't just build brands {" "}
+                <span style={{ color: "#00ff64" }}>we build legacies.</span>
+              </span>
+            </p>
+          </div>
+
+          {/* CTAs */}
+          <div
+            className="anim-fade-up flex flex-wrap items-center gap-3 mb-7"
+            style={{ animationDelay: "1.02s" }}
+          >
+            <a href="#contact" className="cta-green">
+              Start a Project
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="w-3.5 h-3.5">
+                <line x1="2" y1="8" x2="14" y2="8" />
+                <polyline points="9,3 14,8 9,13" />
+              </svg>
+            </a>
+            <a href="#work" className="cta-outline">
+              See Our Work
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="w-3 h-3 opacity-60">
+                <line x1="2" y1="8" x2="14" y2="8" />
+                <polyline points="9,3 14,8 9,13" />
+              </svg>
+            </a>
+          </div>
+
+          {/* Pill tags */}
+          <div
+            className="anim-fade-up flex flex-wrap gap-2 mb-10"
+            style={{ animationDelay: "1.14s" }}
+          >
+            {TAGS.map((tag) => (
+              <span key={tag} className="pill-tag">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00ff64] flex-shrink-0" />
                 {tag}
               </span>
             ))}
           </div>
 
-          {/* CTAs — larger text */}
+          {/* Stats row — horizontal, border-top like original */}
           <div
-            className={`flex flex-wrap items-center gap-5 ${isLoaded ? "fadeUp" : "opacity-0"}`}
-            style={{ animationDelay: "0.76s" }}
+            className="anim-fade-up flex flex-wrap gap-0 border-t border-white/[0.1] pt-8"
+            style={{ animationDelay: "1.28s" }}
           >
-            <a
-              href="#contact"
-              className="shimmer-btn relative overflow-hidden inline-flex items-center gap-3 px-9 py-4 text-[0.75rem] font-bold tracking-[0.18em] uppercase text-[#0A0A0A] bg-[#00ff64] hover:bg-[#00e85a] transition-colors duration-200 shadow-[0_4px_28px_rgba(0,255,100,0.35)] rounded-sm"
-            >
-              Start a Project
-              <svg viewBox="0 0 12 12" className="w-3 h-3 stroke-current" strokeWidth="2.5" strokeLinecap="round" fill="none">
-                <line x1="2" y1="6" x2="10" y2="6" /><polyline points="7,3 10,6 7,9" />
-              </svg>
-            </a>
-            <a
-              href="#services"
-              className="group inline-flex items-center gap-3 text-[0.75rem] font-bold tracking-[0.18em] uppercase text-[#00ff64] hover:text-[#00e85a] transition-colors duration-200"
-            >
-              Explore Our Work
-              <span className="block w-6 h-px bg-current transition-all duration-300 group-hover:w-12" />
-            </a>
+            {STATS.map((s, i) => (
+              <div
+                key={s.label}
+                className={`pr-8 mr-8 ${i < STATS.length - 1 ? "border-r border-white/[0.1]" : ""}`}
+              >
+                <span className="stat-num">{s.value}</span>
+                <p className="stat-label">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* ── SCROLL INDICATOR ── */}
-        <div
-          className={`absolute bottom-10 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 ${isLoaded ? "fadeUp" : "opacity-0"}`}
-          style={{ animationDelay: "1.1s" }}
-        >
-          <span className="text-[0.55rem] tracking-[0.38em] uppercase text-stone-500 font-semibold">Scroll</span>
-          <div className="pulse-ln w-px h-10 bg-gradient-to-b from-[#00ff64]/60 to-transparent" />
+        {/* ── MARQUEE BAR ── */}
+        <div className="relative z-10 bg-[#0f0f0f] border-t border-[#00ff64]/15 overflow-hidden py-4">
+          <div
+            ref={marqueeRef}
+            className="marquee-track flex whitespace-nowrap"
+            style={{ width: "max-content" }}
+          />
         </div>
-
-        {/* ── BOTTOM STAT STRIP — bigger numbers and labels ── */}
-        <div
-          className={`absolute bottom-0 right-0 hidden lg:grid grid-cols-3 divide-x divide-stone-800/60 border-t border-l border-stone-800/50 backdrop-blur-md bg-[#0A0A0A]/65 ${isLoaded ? "fadeUp" : "opacity-0"}`}
-          style={{ animationDelay: "0.95s" }}
-        >
-          {[
-            { value: "200+",  label: "Satisfied Clients" },
-            { value: "1500+", label: "Projects Delivered" },
-            { value: "6",     label: "Subsidiaries" },
-          ].map((s) => (
-            <div key={s.label} className="flex flex-col items-center px-8 py-5">
-              <span className="serif text-3xl font-bold text-[#00ff64] leading-none mb-1.5">{s.value}</span>
-              <span className="text-[0.58rem] tracking-[0.2em] uppercase text-stone-400 font-semibold">{s.label}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* ── VERTICAL SIDE LABEL ── */}
-        <div
-          className={`absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4 ${isLoaded ? "fadeRight" : "opacity-0"}`}
-          style={{ animationDelay: "1s" }}
-        >
-          <div className="h-14 w-px bg-gradient-to-b from-transparent via-[#00ff64]/25 to-transparent" />
-          <span className="text-stone-500 text-[0.52rem] tracking-[0.35em] uppercase font-semibold" style={{ writingMode: "vertical-rl" }}>
-            Markbrand Nigeria Limited
-          </span>
-          <div className="h-14 w-px bg-gradient-to-b from-transparent via-[#00ff64]/25 to-transparent" />
-        </div>
-
       </section>
-
-      {/* ── MARQUEE STRIP — bigger, bolder ── */}
-      <div className="sans border-y border-stone-800/60 py-4 bg-[#0D0D0D] overflow-hidden">
-        <div className="flex gap-12 whitespace-nowrap" style={{ animation: "marquee 22s linear infinite" }}>
-          {[...Array(2)].flatMap((_, arr) =>
-            ["Commercial Printing", "Creative Branding", "Photography", "Media Production", "Fashion & Tailoring", "Digital Education", "Marking You Out!", "The World Is Your Market"].map((item, i) => (
-              <span key={`${arr}-${item}-${i}`} className="flex items-center gap-5 text-[0.65rem] tracking-[0.3em] uppercase text-stone-500 font-semibold flex-shrink-0">
-                {item}<span className="w-1.5 h-1.5 rounded-full bg-[#00ff64]/50 flex-shrink-0" />
-              </span>
-            ))
-          )}
-        </div>
-      </div>
     </>
   );
 }

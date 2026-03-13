@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactCompiler: true,
+  // Remove reactCompiler: true — it conflicts with Turbopack
   images: {
     remotePatterns: [
       {
