@@ -126,19 +126,20 @@ export default function AboutSection() {
 
         /* Who we are pill */
         .ab-who {
-          display: inline-flex; align-items: center; gap: 0.6rem;
+          display: inline-flex; align-items: center; gap: 0.7rem;
           margin-bottom: 1.8rem;
-          padding: 0.5rem 1rem;
-          background: var(--g-dim);
-          border: 1px solid rgba(0,255,100,0.2);
+          padding: 0.7rem 1.2rem;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.15);
           border-radius: 4px;
           width: fit-content;
         }
         .ab-who-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--g); flex-shrink: 0; }
         .ab-who-name {
-          font-size: 0.78rem; font-weight: 800;
-          letter-spacing: 0.12em; text-transform: uppercase;
-          color: var(--g);
+          font-family: 'Barlow', sans-serif;
+          font-size: 1rem; font-weight: 900;
+          letter-spacing: 0.04em; text-transform: uppercase;
+          color: #ffffff;
         }
 
         /* Description */
@@ -261,8 +262,8 @@ export default function AboutSection() {
           >
             {/* Eyebrow */}
             <div className={`ab-eye rv d1 ${sec.vis ? "in" : ""}`}>
-              <div className="ab-eye-bar" />
-              <span className="ab-eye-txt">Our Story</span>
+             {/*  <div className="ab-eye-bar" />
+              <span className="ab-eye-txt">Our Story</span> */}
             </div>
 
             {/* Title */}
@@ -272,11 +273,11 @@ export default function AboutSection() {
             </div>
 
             {/* Company name chip */}
-            <div className={`ab-who rv d3 ${sec.vis ? "in" : ""}`}>
+         {/*    <div className={`ab-who rv d3 ${sec.vis ? "in" : ""}`}>
               <span className="ab-who-dot" />
               <span className="ab-who-name">Markbrand Nigeria Limited</span>
             </div>
-
+ */}
             {/* Description */}
             <p className={`ab-desc rv d3 ${sec.vis ? "in" : ""}`}>
               Adamawa's most respected commercial printing &amp; branding powerhouse — helping businesses stand out, speak louder, and compete on a global stage for over a decade.
