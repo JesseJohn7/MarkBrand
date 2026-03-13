@@ -268,8 +268,8 @@ export default function AboutSection() {
 
             {/* Title */}
             <div className={`rv d2 ${sec.vis ? "in" : ""}`}>
-              <h2 className="ab-title">About</h2>
-              <h2 className="ab-title-sub">Markbrand.</h2>
+              <h2 className="ab-title">About </h2>
+              <h2 className="ab-title-sub">Markbrand</h2>
             </div>
 
             {/* Company name chip */}
@@ -280,7 +280,7 @@ export default function AboutSection() {
  */}
             {/* Description */}
             <p className={`ab-desc rv d3 ${sec.vis ? "in" : ""}`}>
-              Adamawa's most respected commercial printing &amp; branding powerhouse — helping businesses stand out, speak louder, and compete on a global stage for over a decade.
+              Adamawa's most respected commercial printing &amp; branding powerhouse  helping businesses stand out, speak louder, and compete on a global stage for over a decade.
             </p>
 
             {/* Legacy pull quote */}

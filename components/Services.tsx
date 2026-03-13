@@ -176,13 +176,13 @@ export default function ServicesSection() {
           >
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-[#6BBF1F] shrink-0" />
-              <span className="text-[0.6rem] tracking-[0.4em] uppercase text-[#6BBF1F] font-bold">What We Do</span>
+              <span className="text-[0.7rem] tracking-[0.4em] uppercase text-[#6BBF1F] font-extrabold">What We Do</span>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
               <h2 className="svc-serif text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.0] text-white">
                 Our <em className="text-[#6BBF1F]">Services.</em>
               </h2>
-              <p className="text-sm text-stone-400 max-w-sm leading-relaxed lg:text-right font-medium">
+              <p className="text-base text-stone-300 max-w-sm leading-relaxed lg:text-right font-semibold">
                 From the first print to a full brand identity — world-class creative and production services under one roof.
               </p>
             </div>
@@ -230,26 +230,26 @@ export default function ServicesSection() {
                 </div>
 
                 {/* ── CARD BODY ── */}
-                <div className="p-6">
+                <div className="p-7">
                   {/* title + tagline */}
                   <div className="mb-3">
-                    <h3 className="svc-serif text-2xl font-black text-white leading-tight mb-1">
+                    <h3 className="svc-serif text-[1.7rem] font-black text-white leading-tight mb-2">
                       {svc.title}
                     </h3>
-                    <p className="text-[0.55rem] tracking-[0.3em] uppercase text-[#6BBF1F] font-bold">
+                    <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[#6BBF1F] font-extrabold">
                       {svc.tagline}
                     </p>
                   </div>
 
                   {/* description */}
-                  <p className="text-sm text-stone-300 font-medium leading-relaxed mb-5">
+                  <p className="text-[0.95rem] text-stone-100 font-semibold leading-relaxed mb-5">
                     {svc.description}
                   </p>
 
                   {/* feature pills */}
                   <div className="flex flex-wrap gap-2 mb-5">
                     {svc.features.map((f) => (
-                      <span key={f} className="svc-pill px-2.5 py-1 text-[0.5rem] tracking-[0.16em] uppercase border border-stone-700 text-stone-400 rounded-sm font-semibold">
+                      <span key={f} className="svc-pill px-3 py-1.5 text-[0.6rem] tracking-[0.14em] uppercase border border-stone-600 text-stone-200 rounded-sm font-bold">
                         {f}
                       </span>
                     ))}
@@ -257,7 +257,7 @@ export default function ServicesSection() {
 
                   {/* learn more */}
                   <div className="flex items-center gap-2 pt-2 border-t border-stone-800">
-                    <span className="text-[0.6rem] tracking-[0.22em] uppercase text-[#6BBF1F] font-bold">Learn More</span>
+                    <span className="text-[0.68rem] tracking-[0.22em] uppercase text-[#6BBF1F] font-extrabold">Learn More</span>
                     <svg viewBox="0 0 12 12" className="svc-arrow w-3 h-3 stroke-[#6BBF1F]" strokeWidth="2.2" strokeLinecap="round" fill="none">
                       <line x1="2" y1="6" x2="10" y2="6" /><polyline points="7,3 10,6 7,9" />
                     </svg>
@@ -279,7 +279,7 @@ export default function ServicesSection() {
               <p className="svc-serif text-2xl sm:text-3xl font-black text-white mb-1">
                 Not sure which service fits?
               </p>
-              <p className="text-sm text-stone-400 font-medium">
+              <p className="text-base text-stone-300 font-semibold">
                 Let&apos;s talk — we&apos;ll figure out exactly what your brand needs.
               </p>
             </div>
