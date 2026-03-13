@@ -76,7 +76,7 @@ export default function AboutSection() {
           flex-direction: column;
           justify-content: center;
           padding: 9rem 5rem 6rem 5rem;
-          background: var(--bk);
+          background: #060606;
           position: relative;
         }
 
@@ -98,8 +98,8 @@ export default function AboutSection() {
         }
         .ab-eye-bar { width: 28px; height: 2px; background: var(--g); border-radius: 2px; }
         .ab-eye-txt {
-          font-size: 0.62rem; font-weight: 700;
-          letter-spacing: 0.38em; text-transform: uppercase;
+          font-size: 0.68rem; font-weight: 700;
+          letter-spacing: 0.35em; text-transform: uppercase;
           color: var(--g);
         }
 
@@ -136,36 +136,37 @@ export default function AboutSection() {
         }
         .ab-who-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--g); flex-shrink: 0; }
         .ab-who-name {
-          font-size: 0.72rem; font-weight: 800;
+          font-size: 0.78rem; font-weight: 800;
           letter-spacing: 0.12em; text-transform: uppercase;
           color: var(--g);
         }
 
         /* Description */
         .ab-desc {
-          font-size: clamp(0.95rem, 1.3vw, 1.05rem);
-          font-weight: 400;
-          line-height: 1.85;
-          color: rgba(232,232,232,0.65);
-          max-width: 46ch;
-          margin-bottom: 1.4rem;
+          font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+          font-weight: 500;
+          line-height: 1.95;
+          color: #ffffff;
+          max-width: 48ch;
+          margin-bottom: 1.6rem;
         }
-        .ab-desc b { color: #ffffff; font-weight: 700; }
-        .ab-desc .hi { color: var(--g); font-weight: 600; }
+        .ab-desc b { color: #ffffff; font-weight: 800; text-decoration: underline; text-decoration-color: rgba(0,255,100,0.4); text-underline-offset: 3px; }
+        .ab-desc .hi { color: var(--g); font-weight: 700; }
 
         /* Legacy line */
         .ab-legacy {
           font-family: 'Fraunces', serif;
-          font-size: clamp(1rem, 1.5vw, 1.15rem);
+          font-size: clamp(1.05rem, 1.6vw, 1.22rem);
           font-weight: 700;
           font-style: italic;
-          line-height: 1.5;
+          line-height: 1.65;
           color: #ffffff;
-          padding-left: 1.2rem;
-          border-left: 2.5px solid var(--g);
+          padding: 1rem 1.4rem;
+          border-left: 3px solid var(--g);
+          background: rgba(0,255,100,0.05);
           margin-bottom: 3rem;
         }
-        .ab-legacy span { color: var(--g); }
+        .ab-legacy span { color: var(--g); font-weight: 800; }
 
         /* Stats row */
         .ab-stats {
@@ -181,14 +182,14 @@ export default function AboutSection() {
         .ab-stat:last-child { border-right: none; }
         .ab-stat-n {
           font-family: 'Urbanist', sans-serif;
-          font-size: 1.9rem; font-weight: 900;
+          font-size: 2.1rem; font-weight: 900;
           line-height: 1; letter-spacing: -0.03em;
           color: var(--g);
         }
         .ab-stat-l {
           font-size: 0.55rem; font-weight: 700;
           letter-spacing: 0.2em; text-transform: uppercase;
-          color: rgba(232,232,232,0.35);
+          color: rgba(232,232,232,0.6);
           margin-top: 0.3rem;
         }
 
@@ -232,7 +233,7 @@ export default function AboutSection() {
         .ab-badge-place {
           font-size: 0.58rem; font-weight: 600;
           letter-spacing: 0.18em; text-transform: uppercase;
-          color: rgba(232,232,232,0.35); margin-top: 0.4rem;
+          color: rgba(232,232,232,0.6); margin-top: 0.4rem;
         }
 
         /* ── RESPONSIVE ── */
