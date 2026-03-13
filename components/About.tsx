@@ -30,7 +30,7 @@ export default function AboutSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Barlow:wght@400;500;600;700;800;900&display=swap');
 
         :root {
           --g: #00ff64;
@@ -105,21 +105,21 @@ export default function AboutSection() {
 
         /* Main title */
         .ab-title {
-          font-family: 'Fraunces', serif;
-          font-size: clamp(3rem, 5.5vw, 5.2rem);
-          font-weight: 700;
+          font-family: 'Barlow', sans-serif;
+          font-size: clamp(3.2rem, 5.8vw, 5.6rem);
+          font-weight: 900;
           line-height: 1.0;
-          letter-spacing: -0.02em;
+          letter-spacing: -0.01em;
           color: #ffffff;
-          margin-bottom: 0.4rem;
+          margin-bottom: 0.2rem;
         }
         .ab-title-sub {
-          font-family: 'Fraunces', serif;
-          font-size: clamp(3rem, 5.5vw, 5.2rem);
-          font-weight: 300;
-          font-style: italic;
+          font-family: 'Barlow', sans-serif;
+          font-size: clamp(3.2rem, 5.8vw, 5.6rem);
+          font-weight: 900;
+          font-style: normal;
           line-height: 1.0;
-          letter-spacing: -0.02em;
+          letter-spacing: -0.01em;
           color: var(--g);
           margin-bottom: 2.4rem;
         }
@@ -143,30 +143,31 @@ export default function AboutSection() {
 
         /* Description */
         .ab-desc {
-          font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+          font-family: 'Barlow', sans-serif;
+          font-size: clamp(1.1rem, 1.55vw, 1.22rem);
           font-weight: 500;
           line-height: 1.95;
           color: #ffffff;
           max-width: 48ch;
           margin-bottom: 1.6rem;
         }
-        .ab-desc b { color: #ffffff; font-weight: 800; text-decoration: underline; text-decoration-color: rgba(0,255,100,0.4); text-underline-offset: 3px; }
-        .ab-desc .hi { color: var(--g); font-weight: 700; }
+        .ab-desc b { color: #ffffff; font-weight: 800; }
+        .ab-desc .hi { color: #ffffff; font-weight: 700; }
 
         /* Legacy line */
         .ab-legacy {
-          font-family: 'Fraunces', serif;
-          font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+          font-family: 'Barlow', sans-serif;
+          font-size: clamp(1.1rem, 1.6vw, 1.25rem);
           font-weight: 700;
-          font-style: italic;
-          line-height: 1.65;
+          font-style: normal;
+          line-height: 1.7;
           color: #ffffff;
           padding: 1rem 1.4rem;
           border-left: 3px solid var(--g);
           background: rgba(0,255,100,0.05);
           margin-bottom: 3rem;
         }
-        .ab-legacy span { color: var(--g); font-weight: 800; }
+        .ab-legacy span { color: #ffffff; font-weight: 700; }
 
         /* Stats row */
         .ab-stats {
@@ -226,8 +227,8 @@ export default function AboutSection() {
           color: var(--g); margin-bottom: 0.5rem;
         }
         .ab-badge-year {
-          font-family: 'Fraunces', serif;
-          font-size: 2.8rem; font-weight: 700; line-height: 1;
+          font-family: 'Barlow', sans-serif;
+          font-size: 2.8rem; font-weight: 900; line-height: 1;
           color: #ffffff; letter-spacing: -0.02em;
         }
         .ab-badge-place {
@@ -278,17 +279,12 @@ export default function AboutSection() {
 
             {/* Description */}
             <p className={`ab-desc rv d3 ${sec.vis ? "in" : ""}`}>
-              Adamawa's most respected{" "}
-              <b>commercial printing &amp; branding powerhouse</b> — helping
-              businesses{" "}
-              <span className="hi">stand out, speak louder,</span> and compete
-              on a global stage for over a decade.
+              Adamawa's most respected commercial printing &amp; branding powerhouse — helping businesses stand out, speak louder, and compete on a global stage for over a decade.
             </p>
 
             {/* Legacy pull quote */}
             <p className={`ab-legacy rv d4 ${sec.vis ? "in" : ""}`}>
-              We don't just build brands —{" "}
-              <span>we build legacies.</span>
+              We don't just build brands — we build legacies.
             </p>
 
             {/* Stats */}
